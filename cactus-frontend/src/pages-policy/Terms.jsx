@@ -4,7 +4,7 @@ import styled from 'styled-components';
 function Terms() {
     return (
         <MainContainer>
-         <img src="./bg1.jpg" alt="main" /> 
+         <img src="./bg2.jpg" alt="main" /> 
         </MainContainer>
     )
 }
