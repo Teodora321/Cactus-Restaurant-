@@ -13,15 +13,15 @@ function Footer() {
                             <h4>Subscribe</h4>
                             <ul className="list-unstyled">
                                 <li>
-                                Now you can subscribe and receive notification about party nights,
-                                promotions, facebook games with awards and
-                                everything about Cactus Jak's Bar & Grill.
+                                    Now you can subscribe and receive notification about party nights,
+                                    promotions, facebook games with awards and
+                                    everything about Cactus Jak's Bar & Grill.
                               </li>
                                 <li>
                                     <input placeholder="Email"></input>
                                 </li>
                                 <li>
-                                <button className="subscribe">SUBSCRIBE!</button>
+                                    <button className="subscribe">SUBSCRIBE!</button>
                                 </li>
                             </ul>
                         </div>
@@ -42,9 +42,9 @@ function Footer() {
                                     <li> Terms of use  </li>
                                 </Link>
                                 <Link to='/privacy'>
-                                    <li> Privacy Policy</li>  
+                                    <li> Privacy Policy</li>
                                 </Link>
-                                <Link to='cookies'> 
+                                <Link to='cookies'>
                                     <li> Cookies Policy</li>
                                 </Link>
                             </ul>
@@ -53,7 +53,7 @@ function Footer() {
                         <div className="col-md-3 col-sm-6">
                             <h4>Rate Us On Tripadvisor</h4>
                             <ul className="list-unstyled">
-                               <img src="./qr-cactus.png" alt="qr-code" style={{ width: '99px' }}></img>
+                                <img src="./qr-cactus.png" alt="qr-code" style={{ width: '99px' }}></img>
                             </ul>
                         </div>
                     </div>
@@ -102,10 +102,11 @@ const FooterContainer = styled.footer`
   ul li{
       font-size:1.2rem;
   }
-  ul li a:hover {
-    color: red;
-    text-decoration:none;
-  }
+ ul li:hover {
+        color: #8a261d;
+        text-decoration:none;
+ }
+  
   .subscribe{
       color:white;
       background:black;

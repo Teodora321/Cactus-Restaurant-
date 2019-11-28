@@ -21,7 +21,6 @@ class App extends React.Component {
           <Route path='/privacy' exact component={PrivacyPolicy} />
           <Route path='/cookies' exact component={CookiePolicy} />
         </Switch>
-       
         <Footer />
       </div>
     );

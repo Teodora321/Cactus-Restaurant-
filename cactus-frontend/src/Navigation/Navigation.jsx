@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Navigation.css';
 import styled from 'styled-components';
-import { DropdownButton, Dropdown } from 'react-bootstrap';
+
+
 function Navigation() {
     return (
         <NavContainer className="main-nav">
@@ -11,25 +12,38 @@ function Navigation() {
                     <li>
                         <img src="./cactus-logo.png" alt="logo" id="logo" />
                     </li>
-                    <li> 
-                        <DropdownButton className="primary" id="dropdown-basic-button" title="Menu">
-                            <Dropdown.Item  href="#/action-1">Action</Dropdown.Item>
-                            <Dropdown.Item  href="#/action-2">Another action</Dropdown.Item>
-                            <Dropdown.Item  href="#/action-3">Something else</Dropdown.Item>
-                        </DropdownButton>
-                    </li>
-                    <li>
-                        <a href="/"> Home</a>
-                    </li>
-                    <li>
-                        <a href="/"> Contacts</a>
-                    </li>
-                    <li>
-                        <a href="/"> About</a>
-                    </li>
-                   
-                </ul>
 
+                    <Link to="/">
+                        <li>
+                            Home
+                    </li>
+                    </Link>
+                    <Link to="/menu">
+                        <li>
+                            Menu
+                        </li>
+                    </Link>
+                    <Link to="/contacts">
+                        <li>
+                            Contacts
+                    </li>
+                    </Link>
+                    <Link to="/about">
+                        <li>
+                            About
+                    </li>
+                    </Link>
+                    <Link to="/register">
+                        <li className='user'>
+                            Register
+                        </li>
+                    </Link>
+                    <Link to="/login">
+                        <li className='user'>
+                            Login
+                        </li>
+                    </Link> 
+                </ul>
             </nav>
 
         </NavContainer>
@@ -42,38 +56,45 @@ const NavContainer = styled.nav`
     background: rgba(0,0,0, 0.7);
     padding-top: 6rem;
     color: white;
-    position:absolute;
     top:0;
     width:100%;
+    display:flex;
+    align-items: center;
+    position:absolute;
   }
-  ul li a {
+  ul li {
     color: white;
     margin: 0 5rem;
     font-size: 1.5rem;
     padding: 0 5 rem;
   }
-  ul li a:hover {
-    color: red;
+ ul li:hover {
+    color: #8a261d;
     text-decoration:none;
   }
-  #dropdown-basic-button {
-    color: white;
-    background:#7b302b;
-    border-color: black;
-    margin: 0 4rem;
-    font-size: 1.5rem;
+  .user{
+    bottom: 0;
+    color:red;
+    font-size: small;
+    padding: 0;
+    margin: 12px;
+    line-height: normal;
+    float: right;
+    margin-top: -48px;
+    margin-right: 27px;
+    padding-right: -11px;
+    margin-left: 500p;
+    top: 20px;
   }
- .dropdown-item{
-    color:black;
-    margin:0;
-    line-height:2.5;
-  }
+
   #logo{
     position: absolute;
     top: -18px;
     left: 14pt;
     height: 132px;
     width: 161px;
+
+
 }
  `
 
