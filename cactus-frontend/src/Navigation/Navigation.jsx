@@ -4,6 +4,7 @@ import './Navigation.css';
 import styled from 'styled-components';
 
 
+
 function Navigation() {
     return (
         <NavContainer className="main-nav">
@@ -28,22 +29,19 @@ function Navigation() {
                             Contacts
                     </li>
                     </Link>
-                    <Link to="/about">
+                </ul>
+                <span className='user'>
+                <Link to="/register">
                         <li>
-                            About
-                    </li>
-                    </Link>
-                    <Link to="/register">
-                        <li className='user'>
                             Register
                         </li>
                     </Link>
                     <Link to="/login">
-                        <li className='user'>
+                        <li>
                             Login
                         </li>
                     </Link> 
-                </ul>
+                </span>
             </nav>
 
         </NavContainer>
@@ -61,6 +59,7 @@ const NavContainer = styled.nav`
     display:flex;
     align-items: center;
     position:absolute;
+    z-index:2;
   }
   ul li {
     color: white;
@@ -72,19 +71,25 @@ const NavContainer = styled.nav`
     color: #8a261d;
     text-decoration:none;
   }
-  .user{
+  .user li{
     bottom: 0;
-    color:red;
-    font-size: small;
-    padding: 0;
-    margin: 12px;
-    line-height: normal;
-    float: right;
-    margin-top: -48px;
-    margin-right: 27px;
-    padding-right: -11px;
-    margin-left: 500p;
-    top: 20px;
+    color:#96281e;
+    font-size: 1.5rem;
+    text-decoration:none;
+    margin-left: 3em;
+    list-style: none;
+  }
+  .user li:hover {
+    color: white;
+    text-decoration:none;
+  }
+  .user{
+    position: absolute;
+    right: 26px;
+    width: 200px;
+    height: 120px;
+    display: inherit;
+    text-decoration:none;
   }
 
   #logo{

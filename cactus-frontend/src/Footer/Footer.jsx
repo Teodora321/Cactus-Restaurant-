@@ -29,7 +29,6 @@ function Footer() {
                         <div className="col-md-3 col-sm-6">
                             <h4>Cactus Jak's Bar & Grill</h4>
                             <ul className="list-unstyled">
-                                <Link to='about'><li> About us</li></Link>
                                 <Link to='menu'><li> Menu</li></Link>
                                 <Link to='contacts'><li> Contacts</li></Link>
                             </ul>
@@ -84,9 +83,9 @@ const FooterContainer = styled.footer`
   .footer-middle {
     text-align: -moz-center;
     background: rgba(0,0,0, 0.8);
-    padding-top: 2rem;
+    padding-top: 1rem;
     color: white;
-    position: fixed;
+    //position: fixed;
     vertical-align: bottom;
     bottom: 0px;
     width:100%;

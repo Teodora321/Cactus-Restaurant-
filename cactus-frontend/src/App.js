@@ -20,6 +20,7 @@ class App extends React.Component {
           <Route path='/terms'  component={Terms} />
           <Route path='/privacy' exact component={PrivacyPolicy} />
           <Route path='/cookies' exact component={CookiePolicy} />
+          {/* <Route path='/menu' /> */}
         </Switch>
         <Footer />
       </div>

@@ -1,22 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
+import Image from './terms-bg.jpg'
 
 function Terms() {
     return (
-        <MainContainer>
-            <div id="title" >
-                <h1>Terms & conditions</h1>
-            </div>
-
-            <div classname="content">
-                <h3>I. DEFINITIONS </h3>
+        <MainContainer className='main-terms' style={{ backgroundImage: `url(${Image})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+            <div className="main-div">
+                <h1 id="title">Terms & conditions</h1>
+                <div classname="content">
+                <h3 className="subtitle" >I. DEFINITIONS </h3>
                 <p>
                     1.1. "IP Address" ("IP address") is a unique ID number, associating a device, Internet site or user’s resource in a way that allows their localization in the Internet.             </p>
                 <p>.2. "HAPPINES” Ltd. (hereinafter referred to as HAPPY), is a company with UIC: 103279218, with registered office: Varna, 25 Roza Street, and mailing address: Varna, 25 Tsar Osvoboditel Blvd, "Orbita" hotel, tel: (+359 52) 0700 19 000, e-mail: delivery@happy.bg, which provides services under these Terms of Service, administered through the website: http://dostavka.happy.bg. </p>
                 <p>3. "Malicious acts" are acts or omissions in violation of netiquette or causing injury to persons connected to the Internet and associated networks, including but not limited to sending unsolicited mail (SPAM, JUNK MAIL), channel flooding (FLOOD), obtaining access to resources with foreign rights and passwords, using flaws in the systems for personal benefit or to obtain information (HACK), performing actions that can be qualified as industrial espionage or sabotage, damaging or destroying systems or data sets ( CRACK), sending a Trojan horse or virus causing installation or remote control systems, disturbing the normal operation of other users of the Internet and associated networks, and performing any action that may be classified as a crime or administrative violation under the Bulgarian or other applicable law. </p>
             </div>
             <div classname="content">
-                <h3>II. SUBJECT OF THE CONTRACT </h3>
+                <h3 className="subtitle">II. SUBJECT OF THE CONTRACT </h3>
                 <p>
                     Some of the services of the website dostavka.happy.bg is provided to all consumers without the need for prior registration. These include, but are not limited to: access and use, subject to the rules of these Terms and conditions, of various information resources available through the website dostavki.happy.bg - news, entertainment publications, promotions, calendar information about upcoming events, trainings and seminars, a catalogue of electronic links to Bulgarian and foreign websites or other content provided by dostavka.happy.bg, as well as User Content posted on the website dostavka.happy.bg</p>
                 <p>
@@ -27,7 +26,7 @@ function Terms() {
                 </p>
             </div>
             <div classname="content">
-                <h3>SCOPE OF ACTION. ACCEPTANCE OF TERMS AND CONDITIONS </h3>
+                <h3 className="subtitle">SCOPE OF ACTION. ACCEPTANCE OF TERMS AND CONDITIONS </h3>
                 <p>
                 These Terms apply to the relations with consumers who have registered on the website dostavkа.happy.bg ("Registered User"). The present Terms apply also in the relations with users who have not registered on the website dostavkа.happy.bg ("Unregistered Users”), whereas their rights are limited to using of the services described in Section 2.2.             </p>
                 <p>
@@ -38,7 +37,7 @@ function Terms() {
                 </p>
             </div>
             <div classname="content">
-                <h3>USERNAME AND PASSWORD. USER’S PROFILE </h3>
+                <h3 className="subtitle">USERNAME AND PASSWORD. USER’S PROFILE </h3>
                 <p>
                 Upon registration, the user indicates a user name and a password. If the username is not already taken, the user receives the username and password that they requested. Through these user gets access to their profile, and the opportunity to use the Services under Section 2.3. 
                 The username is a unique code of letters, numbers and symbols through which theUSER identifies theirself when using the services under Section 2.3. dostavka.happy.bg does not verify and is not responsible for the match of the username with the name of the user, whether it affects the rights of third parties and in particular the right to have a name or other personal rights, trade name (company name) rights, trademark rights or other intellectual property rights. </p>
@@ -50,10 +49,10 @@ function Terms() {
             </p>
             </div>
             <div classname="content">
-                <h3> RIGHTS AND OBLIGATIONS OF THE USER </h3>
+                <h3 className="subtitle"> RIGHTS AND OBLIGATIONS OF THE USER </h3>
                 <p>
                 The USER provides the requisite (terminal devices for Internet access and related software applications for use of the services provided by HAPPY and Internet acces
-             </p>
+                </p>
              The USER is entitled to access in on-line regime to the services provided through the Website dostavki.happy.bg, subject to the conditions and access requirements set by HAPPY. 
                 <p>
                 The USER undertakes when using the services provided by HAPPY, not to load, place on the HAPPY server and not to disclose in any way whatsoever to a third party User’s Content - information, data, text messages and any other materials or electronic links to materials.
@@ -66,7 +65,7 @@ function Terms() {
                 
             </div>
             <div classname="content">
-                <h3>LIABILITY. LIMITATION OF LIABILITY </h3>
+                <h3 className="subtitle">LIABILITY. LIMITATION OF LIABILITY </h3>
                 <p>
                 CACTUS JAK'S cares to enable the user of normal use of the Services, but as far as providing them is free HAPPY has no obligation and does not guarantee that they will meet the USER’s requirements, nor that they will be uninterrupted, timely or secure. By accepting the Terms, the USER declares that the use of the Services provided by HAPPY will be entirely at his own risk and responsibility, and the parties agree that HAPPY is not responsible for any damage caused to the USER while using the Services provided. </p>
                 <p>
@@ -81,6 +80,8 @@ function Terms() {
             <div classname="content">
                 <p>These Terms are adopted by resolution of "CACTUS JAK'S Ltd from 05.05.2015, and take effect from 05.05.2015.</p>
             </div>
+            </div>
+           
         </MainContainer>
     )
 
@@ -88,5 +89,32 @@ function Terms() {
 export default Terms
 
 const MainContainer = styled.main`
-       
+.main-div{
+    padding-top:110px;
+    padding-left:3em;
+    padding-right:3em;
+    font-size: 1.5rem;
+    color:white
+
+}
+#title {
+    font-size: 5rem; 
+    padding-bottom:3em; 
+    font-family:"Times New Roman", Times, serif; 
+    font-weight:900;
+    color:white
+
+}
+
+.subtitle{
+    font-size:2rem;
+    padding-top:3em;
+    font-family:"Times New Roman", Times, serif; 
+    font-weight:900;
+    color:white;
+}
+.content{
+    margin-top: 7rem;
+    color:white;
+}
 `

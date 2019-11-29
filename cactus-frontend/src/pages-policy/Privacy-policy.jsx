@@ -1,17 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
+import Image from './terms-bg.jpg'
+
 
 function PrivacyPolicy() {
     return (
-        <MainContainer>
-            <div id="title" >
-                <h1>Privacy policy</h1>
-                <p>Please read this Policy carefully before accessing the Website or its services. If you disagree with any of the terms, you should not access the Website or use our services products in any way or form.  </p>
-                <p>Entry into effect: June 25 2019</p>
-            </div>
+        <MainContainer className='main-terms' style={{ backgroundImage: `url(${Image})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+            <div className="main-div">
+                <h1 id="title">Privacy policy</h1>
+            
 
             <div classname="content">
-                <h3>1. Who are we?</h3>
+                <h3 className="subtitle">1. Who are we?</h3>
                 <p>
                 The rules published herein disclose our policy (“Policy”) concerning the personal data, which we collect through the website www.victoria.bg   (Website) in connection with the usage of the website, its services, content and resources. 
                 </p>
@@ -21,7 +21,7 @@ function PrivacyPolicy() {
                 <p>By accessing, reviewing, registration, using in any way the services and resources on the Website, you acknowledge that you understand the meaning and agree to be bound by this Policy. By accessing the Website and Services, you express your explicit consent to collect, receive, record, organize, compare, update, modify, extract and otherwise legally process, use and share your personal information under this Policy.</p>
             </div>
             <div classname="content">
-                <h3>2. Definitions. Validity and effect </h3>
+                <h3 className="subtitle">2. Definitions. Validity and effect </h3>
                 <p>
                 “Data processing” means any operation or set of operations which is performed on personal data or on sets of personal data, whether or not by automated means, such as collection, recording, organisation, structuring, storage, adaptation or alteration, retrieval, consultation, use, disclosure by transmission, dissemination or otherwise making available, alignment or combination, restriction, erasure or destruction of your personal data. 
                 </p>
@@ -33,7 +33,7 @@ function PrivacyPolicy() {
                 <p>The Policy published herein is applicable and valid for registered and unregistered users of the services of the Administrator, available through the Website. This Policy does not apply to social networks, other websites, platforms or companies, which the Administrator does not control but which give a link to or are connected directly or indirectly with the provided Services. You should be informed that those websites, platforms and companies have their own policies for the protection of personal data, for which we are not liable. You should become acquainted with the privacy policies of those other websites, platforms and companies before providing your personal data to them.</p>
             </div>
             <div classname="content">
-                <h3>3. Data we collect about you</h3>
+                <h3 className="subtitle">3. Data we collect about you</h3>
                 <p>
                 You have the right to access the Website without providing your personal data or registration. However, the access to the services of the Website requires the provision of personal data, e.g. during registration, when making an order of food and drinks. 
                 </p>
@@ -46,7 +46,7 @@ function PrivacyPolicy() {
                 </p>
             </div>
             <div classname="content">
-                <h3>Data we collect automatically</h3>
+                <h3 className="subtitle">Data we collect automatically</h3>
                 <p>
                 We collect device-specific information (such as your hardware model, operating system version, unique device identifiers).                </p>
                 <p>When you use the Website, we may collect and process information about your actual location. We use various technologies to determine location, including IP address, GPS, Wi-Fi access points and cell towers</p>
@@ -55,7 +55,7 @@ function PrivacyPolicy() {
                 </p>
             </div>
             <div classname="content">
-                <h3>5. Who has access to your personal data?</h3>
+                <h3 className="subtitle">5. Who has access to your personal data?</h3>
                 <p>
                 Our employees and consultants will have access to your personal data for the purposes of managing the Website and services, but are bound by a confidentiality obligation regarding the data to which they have access as part of the relevant operations.
                  </p>
@@ -71,7 +71,7 @@ function PrivacyPolicy() {
                
             </div>
             <div classname="content">
-                <h3>6. Personal data storage and retention period</h3>
+                <h3 className="subtitle">6. Personal data storage and retention period</h3>
                 <p>
                 We shall store the personal data provided by you for a period not longer than necessary for the accomplishment of the abovementioned purposes or until the termination of the Services and/or the Website.
 In case you want to delete your account on the Website, all of the data we store about you, will be deleted without delay.                  </p>
@@ -80,17 +80,53 @@ In case you want to delete your account on the Website, all of the data we store
                
             </div>
             <div classname="content">
-                <h3>7.Technical and organizational security measures. Risks</h3>
+                <h3 className="subtitle">7.Technical and organizational security measures. Risks</h3>
                 <p>Being a personal data controller, we shall take all required technical and organizational measures in order to protect the data from accidental or illegal destruction or from accidental loss, from unauthorized access, amendment or distribution, as well as other illegal forms of processing.</p>
                 <p> All the information we receive from you will be stored on secure servers and we will implement technical and organizational measures that are suitable and necessary for your personal data to be protected with an appropriate level of security that will guarantee, in particular, the confidentiality and integrity of the data and prevent the destruction, the accidental or unlawful loss or changes, or the unauthorized disclosure or access of data.</p>
                 <p>Notwithstanding the measures implemented to protect your data, you should be aware that the transfer of data through the Internet or other open networks is never completely secure and there is the risk that your data will be seen and used by unauthorised third parties.</p>
             </div>
             <div classname="content">
-                <p>These Terms are adopted by resolution of "CACTUS JAK'S Ltd from 05.05.2015, and take effect from 05.05.2015.</p>
-            </div>
+                <p id='last'>These Terms are adopted by resolution of "CACTUS JAK'S Ltd from 05.05.2015, and take effect from 05.05.2015.</p>
+                </div>
+                </div>
         </MainContainer>
     )
 }
 export default PrivacyPolicy
 
-const MainContainer = styled.body``
+const MainContainer = styled.main`
+.main-div{
+    padding-top:110px;
+    padding-left:3em;
+    padding-right:3em;
+    font-size: 1.5rem;
+    color:white;
+
+}
+#title {
+    font-size: 5rem; 
+    padding-bottom:3em; 
+    font-family:"Times New Roman", Times, serif; 
+    font-weight:900;
+    color:white;
+
+}
+
+.subtitle{
+    font-size:2rem;
+    padding-top:3em;
+    font-family:"Times New Roman", Times, serif; 
+    font-weight:900;
+    color:white;
+
+
+}
+.content{
+    margin-top: 7rem;
+    color:white;
+   
+}
+#last {
+    padding-bottom: 0;
+}
+`
