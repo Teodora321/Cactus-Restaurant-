@@ -97,7 +97,7 @@ const NavContainer = styled.nav`
     top: -18px;
     left: 14pt;
     height: 132px;
-    width: 161px;
+    width: 181px;
 
 
 }
