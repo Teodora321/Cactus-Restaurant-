@@ -82,7 +82,7 @@ const FooterContainer = styled.footer`
 // }
   .footer-middle {
     text-align: -moz-center;
-    background: rgba(0,0,0, 0.8);
+    background: black;
     padding-top: 1rem;
     color: white;
     //position: fixed;

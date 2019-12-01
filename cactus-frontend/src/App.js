@@ -8,6 +8,8 @@ import { Switch, Route } from 'react-router-dom';
 import Terms from './pages-policy/Terms';
 import PrivacyPolicy from './pages-policy/Privacy-policy';
 import CookiePolicy from './pages-policy/Cookie-policy';
+import Register from './Register/Register';
+import Contacts from './Contacts/Contacts';
 
 
 class App extends React.Component {
@@ -18,8 +20,10 @@ class App extends React.Component {
         <Switch>
           <Route path='/' exact component={Main} />
           <Route path='/terms'  component={Terms} />
-          <Route path='/privacy' exact component={PrivacyPolicy} />
-          <Route path='/cookies' exact component={CookiePolicy} />
+          <Route path='/privacy'  component={PrivacyPolicy} />
+          <Route path='/cookies'  component={CookiePolicy} />
+          <Route path='/register' component={Register} />
+          <Route path='/contacts' component={Contacts}/>
           {/* <Route path='/menu' /> */}
         </Switch>
         <Footer />

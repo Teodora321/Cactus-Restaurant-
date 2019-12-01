@@ -51,7 +51,7 @@ export default Navigation;
 
 const NavContainer = styled.nav`
   .navbar {
-    background: rgba(0,0,0, 0.7);
+    background: rgba(0,0,0, 0.8);
     padding-top: 6rem;
     color: white;
     top:0;
