@@ -8,8 +8,9 @@ import { Switch, Route } from 'react-router-dom';
 import Terms from '../pages-policy/Terms';
 import PrivacyPolicy from '../pages-policy/Privacy-policy';
 import CookiePolicy from '../pages-policy/Cookie-policy';
-import Register from '../Register/Register';
+import Register from '../user/Register/Register';
 import Contacts from '../Contacts/Contacts';
+import NotFound from '../NotFound';
 
 
 class App extends React.Component {
@@ -19,11 +20,12 @@ class App extends React.Component {
         <Navigation />
         <Switch>
           <Route path='/' exact component={Main} />
-          <Route path='/terms'  component={Terms} />
-          <Route path='/privacy'  component={PrivacyPolicy} />
-          <Route path='/cookies'  component={CookiePolicy} />
+          <Route path='/terms' component={Terms} />
+          <Route path='/privacy' component={PrivacyPolicy} />
+          <Route path='/cookies' component={CookiePolicy} />
           <Route path='/register' component={Register} />
-          <Route path='/contacts' component={Contacts}/>
+          <Route path='/contacts' component={Contacts} />
+          <Route component={NotFound} />
           {/* <Route path='/menu' /> */}
         </Switch>
         <Footer />
@@ -31,5 +33,5 @@ class App extends React.Component {
     );
   }
 }
-  
-  export default App;
+
+export default App;
