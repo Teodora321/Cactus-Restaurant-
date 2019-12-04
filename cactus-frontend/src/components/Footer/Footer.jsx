@@ -10,19 +10,19 @@ function Footer() {
                     <div className="row">
                         {/* Column 1 */}
                         <div className="col-md-3 col-sm-6">
-                            <h4>Subscribe</h4>
+                            <h4>About us</h4>
                             <ul className="list-unstyled">
-                                <li>
+                                <p>
                                     Now you can subscribe and receive notification about party nights,
                                     promotions, facebook games with awards and
                                     everything about Cactus Jak's Bar & Grill.
-                              </li>
-                                <li>
-                                    <input placeholder="Email"></input>
-                                </li>
-                                <li>
-                                    <button className="subscribe">SUBSCRIBE!</button>
-                                </li>
+                              </p>
+                                <div className="social-icons">
+                                    <a href="https://www.facebook.com/billykehajov1117/"><i id="social-fb" className="fa fa-facebook-square fa-3x social"></i></a>
+                                    <a href="https://www.facebook.com/billykehajov1117/"><i id="social-tw" className="fa fa-twitter-square fa-3x social"></i></a>
+                                    <a href="https://www.facebook.com/billykehajov1117/"><i id="social-gp" className="fa fa-google-plus-square fa-3x social"></i></a>
+                                    <a href="https://www.facebook.com/billykehajov1117/"><i id="social-em" className="fa fa-envelope-square fa-3x social"></i></a>
+                                </div>
                             </ul>
                         </div>
                         {/* Column 2 */}
@@ -102,15 +102,34 @@ const FooterContainer = styled.footer`
       font-size:1.2rem;
   }
  ul li:hover {
-        color: #8a261d;
+        color: #96281e;
         text-decoration:none;
  }
-  
-  .subscribe{
-      color:white;
-      background:black;
-  }
-  ul li input{
-      color:black
-  }
+ .social-icons{
+    
+    margin: 0;
+    padding: 0;
+    font-size : 10px;
+}
+
+.social {
+    margin:7px 7px 7px 0px;
+    color:#fff;
+}
+#social-fb:hover {
+     color: #96281e;
+     transition:all .25s;
+ }
+ #social-tw:hover {
+     color: #96281e;
+     transition:all .25s;
+ }
+ #social-gp:hover {
+     color: #96281e;
+     transition:all .25s;
+ }
+ #social-em:hover {
+     color: #96281e;
+     transition:all .25s;
+ }
 `;

@@ -1,54 +1,89 @@
 import React from 'react';
 import styled from 'styled-components';
-
-function Register() {
-    return (
-        <SectionContainer>
-            <section className="register-block">
-                <div className="container">
-                    <div class="row">
-                        <div class="col-md-4 register-sec">
-                            <h2 class="text-center">Register</h2>
-                            <form class="register-form">
-                                <div class="form-group">
-                                    <label for="email" class="text-uppercase">Email</label>
-                                    <input type="email" class="form-control" />
-                                </div>
-                                <div class="form-group">
-                                    <label for="name" class="text-uppercase">Name</label>
-                                    <input type="name" class="form-control" placeholder="" />
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="adress" class="text-uppercase">Adress</label>
-                                    <input type="adress" class="form-control" placeholder="" />
-                                </div>
-                                <div class="form-group">
-                                    <label for="password" class="text-uppercase">Password</label>
-                                    <input type="password" class="form-control" placeholder="" />
-                                </div>
-                                <div class="form-group">
-                                    <label for="rePassword" class="text-uppercase">Re - Password</label>
-                                    <input type="rePassword" class="form-control" placeholder="" />
-                                </div>
+import userService from '../../../services/user-service';
 
 
+class Register extends React.Component {
 
-                                <div class="form-check">
-                                    <button type="submit" class="btn btn-register float-right">Register</button>
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: '',
+            name: '',
+            adress: '',
+            password: '',
+            rePassword: ''
+        };
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    handleChange(event) {
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+    }
+    handleSubmit(event) {
+        event.preventDefault();
+
+        const newUser = {
+             email: this.state.email,
+             name : this.state.name,
+             adress : this.state.adress,
+             password : this.state.password,
+             rePassword : this.state.rePassword
+        }
+            userService.register(newUser).then(res => {
+            this.props.history.push(`/login`)
+          })
+    }
+
+        render() { 
+               return ( <SectionContainer>
+                    <section className="register-block">
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-md-4 register-sec">
+                                    <h2 className="text-center">Register</h2>
+                                    <form className="register-form" onSubmit={this.handleSubmit}>
+                                        <div className="form-group">
+                                            <label className="text-uppercase">Email</label>
+                                            <input type="email"  name="email" className="form-control" value={this.state.email} onChange={this.handleChange} />
+                                        </div>
+                                        <div className="form-group">
+                                            <label className="text-uppercase">Name</label>
+                                            <input name="name" className="form-control" value={this.state.name} onChange={this.handleChange} />
+                                        </div>
+
+                                        <div className="form-group">
+                                            <label className="text-uppercase">Adress</label>
+                                            <input name="adress" className="form-control" value={this.state.adress} onChange={this.handleChange} />
+                                        </div>
+                                        <div className="form-group">
+                                            <label className="text-uppercase">Password</label>
+                                            <input name="password" className="form-control" value={this.state.password} onChange={this.handleChange} />
+                                        </div>
+                                        <div className="form-group">
+                                            <label className="text-uppercase">Re - Password</label>
+                                            <input name="rePassword" className="form-control" value={this.state.rePassword} onChange={this.handleChange} />
+                                        </div>
+                                        <div className="form-check">
+                                            <button type="submit" className="btn btn-register float-right">Register</button>
+                                        </div>
+
+                                    </form>
                                 </div>
-
-                            </form>
-
+                                <div className="col-md-8 banner-sec">
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-md-8 banner-sec">
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </SectionContainer>
-    )
-}
+                    </section>
+                </SectionContainer>
+            )
+        }
+       
+    }
+
 
 export default Register;
 
@@ -137,3 +172,6 @@ padding-top:140px;
     color:#fff;
 }
 `
+
+
+

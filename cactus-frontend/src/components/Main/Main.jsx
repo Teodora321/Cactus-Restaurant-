@@ -2,22 +2,6 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 import { Carousel } from 'react-bootstrap';
   
-// function Main() {
-//     return (
-//       <MainContainer>
-//         <img src="./main-bg.jpg" alt="main" /> 
-//       </MainContainer>
-//     )
-// }
-// export default Main
-
-
-// const MainContainer = styled.main`
-//        img{
-//         width:100%;
-//         height:100%   
-//        } 
-// `
 function Main() {
     const [index, setIndex] = useState(0);
     const [direction, setDirection] = useState(null);
