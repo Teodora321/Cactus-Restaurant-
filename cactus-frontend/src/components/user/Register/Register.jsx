@@ -1,89 +1,103 @@
-import React from 'react';
+import React, { Component } from "react";
+import { Form } from "react-final-form";
+import { Redirect } from 'react-router-dom';
+
+import InputField from '../sharedField';
+import userServices from '../../../services/user-service';
 import styled from 'styled-components';
-import userService from '../../../services/user-service';
 
 
-class Register extends React.Component {
+
+class Register extends Component {
 
     constructor(props) {
-        super(props);
+        super(props)
+
         this.state = {
-            email: '',
-            name: '',
-            adress: '',
-            password: '',
-            rePassword: ''
-        };
-
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-    handleChange(event) {
-        this.setState({
-            [event.target.name]: event.target.value
-        });
-    }
-    handleSubmit(event) {
-        event.preventDefault();
-
-        const newUser = {
-             email: this.state.email,
-             name : this.state.name,
-             adress : this.state.adress,
-             password : this.state.password,
-             rePassword : this.state.rePassword
+            hasRegistred: false
         }
-            userService.register(newUser).then(res => {
-            this.props.history.push(`/login`)
-          })
     }
 
-        render() { 
-               return ( <SectionContainer>
-                    <section className="register-block">
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-md-4 register-sec">
-                                    <h2 className="text-center">Register</h2>
-                                    <form className="register-form" onSubmit={this.handleSubmit}>
-                                        <div className="form-group">
-                                            <label className="text-uppercase">Email</label>
-                                            <input type="email"  name="email" className="form-control" value={this.state.email} onChange={this.handleChange} />
-                                        </div>
-                                        <div className="form-group">
-                                            <label className="text-uppercase">Name</label>
-                                            <input name="name" className="form-control" value={this.state.name} onChange={this.handleChange} />
-                                        </div>
+    onSubmit = values => {
+        const { email, name, adress, password } = values;
+        const data = { email, name, adress, password };
+        console.log(data);
 
-                                        <div className="form-group">
-                                            <label className="text-uppercase">Adress</label>
-                                            <input name="adress" className="form-control" value={this.state.adress} onChange={this.handleChange} />
-                                        </div>
-                                        <div className="form-group">
-                                            <label className="text-uppercase">Password</label>
-                                            <input name="password" className="form-control" value={this.state.password} onChange={this.handleChange} />
-                                        </div>
-                                        <div className="form-group">
-                                            <label className="text-uppercase">Re - Password</label>
-                                            <input name="rePassword" className="form-control" value={this.state.rePassword} onChange={this.handleChange} />
-                                        </div>
-                                        <div className="form-check">
-                                            <button type="submit" className="btn btn-register float-right">Register</button>
-                                        </div>
-
-                                    </form>
-                                </div>
-                                <div className="col-md-8 banner-sec">
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </SectionContainer>
+        userServices.register(data)
+            .then(res => {
+                console.log(res)
+                this.setState({ hasRegistred: true })
+            }
             )
-        }
-       
-    }
+            .catch(err => console.log(err))
 
+    };
+
+    render() {
+        return (
+            <SectionContainer>
+            <section className="register-block">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-4 register-sec">
+                            <h2 className="text-center">Register</h2>
+                            <Form 
+                                onSubmit={this.onSubmit}
+                                validate={values => {
+                                    const errors = {};
+                                    if (!values.email) {
+                                        errors.email = "Required!";
+                                    }
+
+                                    if (!values.name) {
+                                        errors.name = "Required!";
+                                    }
+                                    if (!values.adress) {
+                                        errors.adress = "Required!";
+                                    }
+                                    if (!values.password) {
+                                        errors.password = "Required!";
+                                    }
+
+                                    if (!values.rePassword) {
+                                        errors.rePassword = "Required!";
+                                    } else if (values.rePassword !== values.password) {
+                                        errors.rePassword = "Both passwords must match!";
+                                    }
+                                    return errors;
+                                }}
+                                render={({ handleSubmit, submitting, values }) => (
+
+                                    <form className="form-group">
+                                        <InputField name="email" label={'Email:'} type='text' />
+                                        <InputField name="name" label={'Name:'} type='text' />
+                                        <InputField name="adress" label={'Adress:'} type='text' />
+                                        <InputField name="password" label={'Password:'} type='password' placeholder={'Password'} />
+                                        <InputField name="rePassword" label={'Re-Password:'} placeholder={'Re-Password'} type='password' />
+
+                                        <div className="button">
+                                            <button onClick={(event) => { event.preventDefault(); handleSubmit(); }} disabled={submitting}>
+                                                Register
+                                            </button>
+                                            {
+                                                this.state.hasRegistred ? <Redirect to='/login' /> : <Redirect to='/register' />
+                                            }
+                                        </div>
+                                        {/* <pre>{JSON.stringify(values, 0, 2)}</pre> */}
+                                    </form>
+                                )}
+                            />
+                        </div>
+                        <div className="col-md-8 banner-sec">
+                        </div>
+                    </div>
+                </div>
+            </section>
+             </SectionContainer>
+
+        )
+    }
+}
 
 export default Register;
 
