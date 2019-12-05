@@ -1,36 +1,87 @@
-import React from 'react';
+import React, { Component } from "react";
+import { Form } from "react-final-form";
+import { Redirect } from 'react-router-dom';
+
+import InputField from '../sharedField';
+import userServices from '../../../services/user-service';
 import styled from 'styled-components';
 
-function Login() {
-    return (
-        <SectionContainer>
-            <section className="register-block">
-                <div className="container">
-                    <div class="row">
-                        <div class="col-md-4 register-sec">
-                            <h2 class="text-center">Login</h2>
-                            <form class="register-form">
-                                <div class="form-group">
-                                    <label for="email" class="text-uppercase">Email</label>
-                                    <input type="email" class="form-control" />
-                                </div>
-                                <div class="form-group">
-                                    <label for="password" class="text-uppercase">Password</label>
-                                    <input type="password" class="form-control" placeholder="" />
-                                </div>
-                                <div class="form-check">
-                                    <button type="submit" class="btn btn-register float-right">Login</button>
-                                </div>
-                            </form>
 
-                        </div>
-                        <div class="col-md-8 banner-sec">
+
+class Login extends Component {
+
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            isLoggedIn:false
+        }
+
+    }
+
+    onSubmit = values => {
+        const { email, password } = values;
+        const data = { email, password };
+        console.log(data);
+
+        userServices.login(data)
+            .then(res => {
+                console.log(this.state.isLoggedIn)
+                this.setState({ isLoggedIn: true })
+            }
+            )
+            .catch(err => console.log(err))
+
+    };
+
+    render() {
+        return (
+            <SectionContainer>
+                <section className="register-block">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-md-4 register-sec">
+                                <h2 className="text-center">Login</h2>
+                                <Form
+                                    onSubmit={this.onSubmit}
+                                    validate={values => {
+                                        const errors = {};
+                                        if (!values.email) {
+                                            errors.email = "Required!";
+                                        }
+                                        if (!values.password) {
+                                            errors.password = "Required!";
+                                        }
+                                        return errors;
+                                    }}
+                                    render={({ handleSubmit, submitting, values }) => (
+                                        <form className="form-group">
+                                            <InputField name="email" label={'Email:'} type='text' />
+                                            <InputField name="password" label={'Password:'} type='password' />
+                                            <div>
+                                                <button className="btn btn-register float-right" onClick={(event) => { event.preventDefault(); handleSubmit(); }} disabled={submitting}>
+                                                    Login
+                                                </button>
+                                                {
+                                                   
+                                                    this.state.isLoggedIn ? <Redirect to='/' /> : <Redirect to='/login' />
+                                                    
+                                                }
+                                            </div>
+                                            {/* <pre>{JSON.stringify(values, 0, 2)}</pre> */}
+                                        </form>
+                                    )}
+                                />
+                            </div>
+                            <div className="col-md-8 banner-sec">
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
-        </SectionContainer>
-    )
+                </section>
+            </SectionContainer>
+
+        )
+    }
 }
 
 export default Login;

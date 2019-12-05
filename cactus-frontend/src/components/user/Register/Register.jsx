@@ -75,12 +75,17 @@ class Register extends Component {
                                         <InputField name="password" label={'Password:'} type='password' placeholder={'Password'} />
                                         <InputField name="rePassword" label={'Re-Password:'} placeholder={'Re-Password'} type='password' />
 
-                                        <div className="button">
-                                            <button onClick={(event) => { event.preventDefault(); handleSubmit(); }} disabled={submitting}>
+                                        <div>
+                                            <button className="btn btn-register float-right" onClick={(event) => { event.preventDefault(); handleSubmit(); }} disabled={submitting}>
                                                 Register
                                             </button>
                                             {
-                                                this.state.hasRegistred ? <Redirect to='/login' /> : <Redirect to='/register' />
+                                                this.state.hasRegistred ?
+                                                    <div>
+                                                        <Redirect to='/login' />
+                                                        <span>Success!</span>
+                                                    </div>
+                                                    : <Redirect to='/register' />
                                             }
                                         </div>
                                         {/* <pre>{JSON.stringify(values, 0, 2)}</pre> */}
