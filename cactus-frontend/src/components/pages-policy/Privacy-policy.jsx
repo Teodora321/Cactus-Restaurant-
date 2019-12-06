@@ -13,9 +13,9 @@ function PrivacyPolicy() {
             <div classname="content">
                 <h3 className="subtitle">1. Who are we?</h3>
                 <p>
-                The rules published herein disclose our policy (“Policy”) concerning the personal data, which we collect through the website www.victoria.bg   (Website) in connection with the usage of the website, its services, content and resources. 
+                The rules published herein disclose our policy (“Policy”) concerning the personal data, which we collect through the website www.cactusjaks.bg   (Website) in connection with the usage of the website, its services, content and resources. 
                 </p>
-                <p>Under the name "Victoria" are considered the following companies –administrators:</p>
+                <p>Under the name "Cactus Jak's" are considered the following companies –administrators:</p>
                 <li>"Cactus" Ltd. is a company duly incorporated and operating according to the law of the Republic of Bulgaria with UIC 121878081. </li>
                 <li>“Cactus” Ltd.  is a company duly incorporated and operating according to the law of the Republic of Bulgaria with UIC 121878081.</li>
                 <p>By accessing, reviewing, registration, using in any way the services and resources on the Website, you acknowledge that you understand the meaning and agree to be bound by this Policy. By accessing the Website and Services, you express your explicit consent to collect, receive, record, organize, compare, update, modify, extract and otherwise legally process, use and share your personal information under this Policy.</p>
@@ -27,7 +27,7 @@ function PrivacyPolicy() {
                 </p>
                 <p>“Personal data” are all data which contains identifiable information (e.g. name, address, telephone number, email, etc.). Before we collect and process your personal data we must receive your explicit, freely given, specific, informed and unambiguous consent. </p>
                 <p>
-                "Services" means all services offered by us and the technologies used for their implementation. The services we offer are related to:  orders by a user on the website and made by “Victoria” restaurants.
+                "Services" means all services offered by us and the technologies used for their implementation. The services we offer are related to:  orders by a user on the website and made by “Cactus Jak's” restaurants.
                     "User / Client" means any natural or legal person using the Services provided by the Administrator.
                 </p>  
                 <p>The Policy published herein is applicable and valid for registered and unregistered users of the services of the Administrator, available through the Website. This Policy does not apply to social networks, other websites, platforms or companies, which the Administrator does not control but which give a link to or are connected directly or indirectly with the provided Services. You should be informed that those websites, platforms and companies have their own policies for the protection of personal data, for which we are not liable. You should become acquainted with the privacy policies of those other websites, platforms and companies before providing your personal data to them.</p>

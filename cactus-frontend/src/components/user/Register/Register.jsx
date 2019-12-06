@@ -19,8 +19,8 @@ class Register extends Component {
     }
 
     onSubmit = values => {
-        const { email, name, adress, password } = values;
-        const data = { email, name, adress, password };
+        const { email, name, address, password } = values;
+        const data = { email, name, address, password };
         console.log(data);
 
         userServices.register(data)
@@ -52,8 +52,8 @@ class Register extends Component {
                                     if (!values.name) {
                                         errors.name = "Required!";
                                     }
-                                    if (!values.adress) {
-                                        errors.adress = "Required!";
+                                    if (!values.address) {
+                                        errors.address = "Required!";
                                     }
                                     if (!values.password) {
                                         errors.password = "Required!";
@@ -71,7 +71,7 @@ class Register extends Component {
                                     <form className="form-group">
                                         <InputField name="email" label={'Email:'} type='text' />
                                         <InputField name="name" label={'Name:'} type='text' />
-                                        <InputField name="adress" label={'Adress:'} type='text' />
+                                        <InputField name="address" label={'address:'} type='text' />
                                         <InputField name="password" label={'Password:'} type='password' placeholder={'Password'} />
                                         <InputField name="rePassword" label={'Re-Password:'} placeholder={'Re-Password'} type='password' />
 

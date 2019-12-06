@@ -24,7 +24,7 @@ function Contacts() {
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="well">
-                            <h3 className="h3" ><i className="fa fa-home fa-1x" ></i> Adress:</h3>
+                            <h3 className="h3" ><i className="fa fa-home fa-1x" ></i> Address:</h3>
                             <p className="paragraphs">Area Chaika 257, Sunny Beach, Bulgaria 8240</p>
                             <br />
                             <br />
