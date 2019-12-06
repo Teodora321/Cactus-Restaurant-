@@ -1,22 +1,17 @@
 import React, { Component } from "react";
 import { Form } from "react-final-form";
 import { Redirect } from 'react-router-dom';
-
 import InputField from '../sharedField';
 import userServices from '../../../services/user-service';
 import styled from 'styled-components';
 
-
-
 class Login extends Component {
-
     constructor(props) {
         super(props)
 
         this.state = {
             isLoggedIn:false
         }
-
     }
 
     onSubmit = values => {
@@ -31,7 +26,6 @@ class Login extends Component {
             }
             )
             .catch(err => console.log(err))
-
     };
 
     render() {
@@ -79,7 +73,6 @@ class Login extends Component {
                     </div>
                 </section>
             </SectionContainer>
-
         )
     }
 }

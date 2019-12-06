@@ -40,6 +40,16 @@ function Navigation() {
                             Login
                         </li>
                     </Link> 
+                    <Link to="/profile">
+                        <li>
+                            Profile
+                        </li>
+                    </Link>
+                    <Link to="/logout">
+                        <li>
+                            Logout
+                        </li>
+                    </Link> 
                 </span>
             </nav>
 
@@ -82,14 +92,14 @@ const NavContainer = styled.nav`
     color: white;
     text-decoration:none;
   }
-  .user{
-    position: absolute;
-    right: 26px;
-    width: 200px;
-    height: 120px;
-    display: inherit;
-    text-decoration:none;
-  }
+//   .user{
+//     position: absolute;
+//     right: 26px;
+//     width: 200px;
+//     height: 120px;
+//     display: inherit;
+//     text-decoration:none;
+//   }
 
   #logo{
     position: absolute;
