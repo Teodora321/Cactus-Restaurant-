@@ -1,35 +1,67 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import SingleItem from './SingleItem';
+import Item from './Item';
+import data from '../../data';
+import Image from './bg-menu.jpg'
 
-function Menu() {
-    return (
-        <MenuContainer>
-           <body>
-          <section class="about-area pt-60">
-         <div class="container">
-            <div class="row">
-               <div class="col-xl-12 mb-60">
-                  <div class="section-title text-center">
-                     <p>Famous for good food</p>
-                     <h4>our menu</h4>
-                  </div>
-               </div>
-            </div>
-            <div class="row menu_style1">
-               <div class="col-md-4">
-					<SingleItem/>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                </body>
-        </MenuContainer>
-    )
+const renderItem = (products) => {
+	return products.map(product => {
+		return (
+			<Fragment key={product.id}>
+				<Item {...product} />
+			</Fragment>
+		)
+	})
+}
+
+class Menu extends React.Component {
+	state = {
+		ownerName: ""
+	}
+
+	render() {
+		return (
+			<MenuContainer style={{ backgroundImage: `url(${Image})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+				
+					<section className="about-area pt-60">
+						<div className="container">
+							<div className="row">
+								<div className="col-xl-12 mb-60">
+									<div className="section-title text-center">
+										<p>Famous for good food</p>
+										<h4>Our menu</h4>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<ul class="nav nav-tabs menu_tab" id="myTab" role="tablist">
+									<li class="nav-item">
+										<a class="nav-link" id="salads-tab" data-toggle="tab" href="#salads" role="tab" aria-selected="false">Salads</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" id="meals-tab" data-toggle="tab" href="#meals" role="tab" aria-selected="false">Meals</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link active show" id="desserts-tab" data-toggle="tab" href="#desserts" role="tab" aria-selected="true">Desserts</a>
+									</li>
+								</ul>
+							</div>
+							<div className="row menu_style1">
+								<div className="col-md-4">
+									{renderItem(data)}
+								</div>
+							</div>
+						</div>
+					</section>
+				
+			</MenuContainer>
+		)
+	}
 }
 export default Menu;
 
-const MenuContainer = styled.section`
+const MenuContainer = styled.main`
 body {
 	font-family: 'Montserrat', sans-serif;
 	color: #333;
@@ -39,6 +71,7 @@ body {
 	margin-bottom: 60px;
 }
 .section-title p {
+	color:white
 	font-size: 24px;
 	font-family: Oleo Script;
 	margin-bottom: 0px;
@@ -52,9 +85,11 @@ body {
 	padding-bottom: 25px;
 }
 .section-title{
+	color:white
 	padding-top:120px;
 }
 .section-title h4::before {
+	
 	width: 80px;
 	height: 1.5px;
 	bottom: 0;

@@ -57,9 +57,7 @@ class Login extends Component {
                                                     Login
                                                 </button>
                                                 {
-                                                   
-                                                    this.state.isLoggedIn ? <Redirect to='/' /> : <Redirect to='/login' />
-                                                    
+                                                    this.state.isLoggedIn ? <Redirect to='/profile' /> : <Redirect to='/login' />   
                                                 }
                                             </div>
                                             {/* <pre>{JSON.stringify(values, 0, 2)}</pre> */}

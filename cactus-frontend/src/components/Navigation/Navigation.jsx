@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {AuthContext} from '../user/Auth/AuthContext';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-
-
 function Navigation() {
+    const [user] = useContext(AuthContext);
+
     return (
         <NavContainer className="main-nav">
             <nav className="navbar" >
@@ -26,10 +27,11 @@ function Navigation() {
                     <Link to="/contacts">
                         <li>
                             Contacts
-                    </li>
+                        </li>
                     </Link>
                 </ul>
-                <span className='user'>
+                { !user.isLogged ?
+                <span className='user'> 
                 <Link to="/register">
                         <li>
                             Register
@@ -39,7 +41,10 @@ function Navigation() {
                         <li>
                             Login
                         </li>
-                    </Link> 
+                        </Link> 
+                        </span>
+                    :
+                    <span className="user   "> 
                     <Link to="/profile">
                         <li>
                             Profile
@@ -51,8 +56,8 @@ function Navigation() {
                         </li>
                     </Link> 
                 </span>
+                }
             </nav>
-
         </NavContainer>
     );
 }
