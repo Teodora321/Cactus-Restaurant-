@@ -1,10 +1,10 @@
 import React, {useContext} from 'react';
-import {AuthContext} from '../user/Auth/AuthContext';
+import UserContext from '../user/Auth/UserContext';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 function Navigation() {
-    const [user] = useContext(AuthContext);
+    const [user] = useContext(UserContext)
 
     return (
         <NavContainer className="main-nav">
@@ -30,7 +30,7 @@ function Navigation() {
                         </li>
                     </Link>
                 </ul>
-                { !user.isLogged ?
+                { !user.loggedIn ?
                 <span className='user'> 
                 <Link to="/register">
                         <li>
@@ -44,7 +44,7 @@ function Navigation() {
                         </Link> 
                         </span>
                     :
-                    <span className="user   "> 
+                    <span className="user"> 
                     <Link to="/profile">
                         <li>
                             Profile
@@ -87,7 +87,7 @@ const NavContainer = styled.nav`
   }
   .user li{
     bottom: 0;
-    color:#96281e;
+    color:#ff5e18;
     font-size: 1.5rem;
     text-decoration:none;
     margin-left: 3em;

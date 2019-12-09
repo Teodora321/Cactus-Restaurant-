@@ -102,7 +102,7 @@ const FooterContainer = styled.footer`
       font-size:1.2rem;
   }
  ul li:hover {
-        color: #96281e;
+        color: #ff5e18;
         text-decoration:none;
  }
  .social-icons{

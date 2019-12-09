@@ -1,94 +1,93 @@
-import React, { Component } from "react";
-import { Form } from "react-final-form";
-import { Redirect } from 'react-router-dom';
+import React from "react";
+import { Form, Field } from "react-final-form";
+import { useHistory, Link } from 'react-router-dom';
 
-import InputField from '../sharedField';
 import userServices from '../../../services/user-service';
 import styled from 'styled-components';
 
 
 
-class Register extends Component {
+function Register() {
+    const history = useHistory();
 
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            hasRegistred: false
-        }
-    }
-
-    onSubmit = values => {
-        const { email, name, address, password } = values;
-        const data = { email, name, address, password };
-        console.log(data);
-
-        userServices.register(data)
-            .then(res => {
-                console.log(res)
-                this.setState({ hasRegistred: true })
-            }
-            )
-            .catch(err => console.log(err))
-
+    const onSubmit = (values) => {
+        userServices.register(values)
+            .then(() => history.push("/login"))
+            .catch(err => console.log(err));
     };
 
-    render() {
-        return (
-            <SectionContainer>
+    return (
+        <SectionContainer>
             <section className="register-block">
                 <div className="container">
                     <div className="row">
                         <div className="col-md-4 register-sec">
                             <h2 className="text-center">Register</h2>
-                            <Form 
-                                onSubmit={this.onSubmit}
-                                validate={values => {
-                                    const errors = {};
-                                    if (!values.email) {
-                                        errors.email = "Required!";
-                                    }
-
-                                    if (!values.name) {
-                                        errors.name = "Required!";
-                                    }
-                                    if (!values.address) {
-                                        errors.address = "Required!";
-                                    }
-                                    if (!values.password) {
-                                        errors.password = "Required!";
-                                    }
-
-                                    if (!values.rePassword) {
-                                        errors.rePassword = "Required!";
-                                    } else if (values.rePassword !== values.password) {
-                                        errors.rePassword = "Both passwords must match!";
-                                    }
-                                    return errors;
-                                }}
-                                render={({ handleSubmit, submitting, values }) => (
-
-                                    <form className="form-group">
-                                        <InputField name="email" label={'Email:'} type='text' />
-                                        <InputField name="name" label={'Name:'} type='text' />
-                                        <InputField name="address" label={'address:'} type='text' />
-                                        <InputField name="password" label={'Password:'} type='password' placeholder={'Password'} />
-                                        <InputField name="rePassword" label={'Re-Password:'} placeholder={'Re-Password'} type='password' />
-
-                                        <div>
-                                            <button className="btn btn-register float-right" onClick={(event) => { event.preventDefault(); handleSubmit(); }} disabled={submitting}>
-                                                Register
-                                            </button>
-                                            {
-                                                this.state.hasRegistred ?
-                                                    <div>
-                                                        <Redirect to='/login' />
-                                                        <span>Success!</span>
+                            <Form
+                                onSubmit={onSubmit}
+                                render={({ handleSubmit }) => (
+                                    <form onSubmit={handleSubmit}>
+                                        <Field name="email">
+                                            {({ input, meta }) => (
+                                                <>
+                                                    <div className="form-group">
+                                                        <label className="text-uppercase">Email</label>
+                                                        <input className="form-control" {...input} type="text" />
                                                     </div>
-                                                    : <Redirect to='/register' />
-                                            }
+                                                    <p> {meta.error && meta.touched && <span>{meta.error}</span>}</p>
+                                                </>
+                                            )}
+                                        </Field>
+                                        <Field name="name">
+                                            {({ input, meta }) => (
+                                                <>
+                                                    <div className="form-group">
+                                                        <label className="text-uppercase">Name</label>
+                                                        <input className="form-control" {...input} type="text" />
+                                                    </div>
+                                                    <p>{meta.error && meta.touched && <span>{meta.error}</span>}</p>
+                                                </>
+                                            )}
+                                        </Field>
+                                        <Field name="address">
+                                            {({ input, meta }) => (
+                                                <>
+                                                    <div className="form-group">
+                                                        <label className="text-uppercase">Address</label>
+                                                        <input className="form-control" {...input} type="text" />
+                                                    </div>
+                                                    <p> {meta.error && meta.touched && <span>{meta.error}</span>}</p>
+                                                </>
+                                            )}
+                                        </Field>
+                                        <Field name="password">
+                                            {({ input, meta }) => (
+                                                <>
+                                                    <div className="form-group">
+                                                        <label className="text-uppercase">Password</label>
+                                                        <input className="form-control" {...input} type="password" />
+                                                    </div>
+                                                    <p> {meta.error && meta.touched && <span>{meta.error}</span>}</p>
+                                                </>
+                                            )}
+                                        </Field>
+                                        <Field name="rePassword">
+                                            {({ input, meta }) => (
+                                                <>
+                                                    <div className="form-group">
+                                                        <label className="text-uppercase">Re-Password</label>
+                                                        <input className="form-control" {...input} type="password" />
+                                                    </div>
+                                                    <p> {meta.error && meta.touched && <span>{meta.error}</span>}</p>
+                                                </>
+                                            )}
+                                        </Field>
+                                        <div>
+                                        <button className="btn btn-register float-right"  type="submit" onClick={(event) => { event.preventDefault(); handleSubmit(); }}>
+                                                <Link to='/'>Register</Link>
+                                        </button>
                                         </div>
-                                        {/* <pre>{JSON.stringify(values, 0, 2)}</pre> */}
+
                                     </form>
                                 )}
                             />
@@ -98,11 +97,11 @@ class Register extends Component {
                     </div>
                 </div>
             </section>
-             </SectionContainer>
+        </SectionContainer>
 
-        )
-    }
+    )
 }
+
 
 export default Register;
 

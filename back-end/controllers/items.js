@@ -8,9 +8,9 @@ module.exports = {
     },
 
     post: (req, res, next) => {
-    const { type, description, imgUrl, title, price, description } = req.body;
+    const { type, description, imgUrl, title, price,  } = req.body;
 
-    models.Item.create({ type, description, imgUrl, title, price, description })
+    models.Item.create({ type, description, imgUrl, title, price, })
         .then((createdItem) => res.send(createdItem))
         .catch(next)
   },

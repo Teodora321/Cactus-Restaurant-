@@ -8,17 +8,17 @@ class SingleItem extends React.Component {
         super(props)
     };
 
-
     render() {
-        const { id, type, title, price, description, imageUrl } = this.props
+        const { id, type, title, price, description, imageUrl } = this.props;
+
         return (
-            <imageContainer>
-                <div class="single_menu_list">
+            <ImageContainer>
+                <div className="single_menu_list">
                     <img className="image-class" src={imageUrl} alt="some alt" />
-                    <div class="menu_content">
+                    <div className="menu_content">
                         <h4>
                             {title}
-                            <span>{price}</span>
+                            <span> {price} </span>
                         </h4>
                         <p>{description}</p>
                     </div>
@@ -27,19 +27,23 @@ class SingleItem extends React.Component {
                             <button className="btn btn-success btn-product glyphicon glyphicon-chevron-right">Details</button>
                         </Link>
                         <Link to='/'>
-                            <button class="btn btn-success btn-product glyphicon glyphicon-shopping-cart">Add To Cart</button>
+                            <button className="btn btn-success btn-product glyphicon glyphicon-shopping-cart">Add To Cart</button>
                         </Link>
 
                     </div>
                 </div>
-            </imageContainer>
+            </ImageContainer>
         )
     }
 }
 export default SingleItem;
 
-const imageContainer = styled.section`
-    .menu_content{
-        color:white
-    }
+const ImageContainer=styled.section`
+.menu_content{
+    color:white;
+}
+.single_menu_list{
+    background-color:
+}
+
 `

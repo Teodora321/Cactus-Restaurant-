@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Item from './Item';
 import data from '../../data';
-import Image from './bg-menu.jpg'
+import Image from './bg-menu.jpg';
 
 const renderItem = (products) => {
 	return products.map(product => {
@@ -37,13 +37,13 @@ class Menu extends React.Component {
 							<div class="row">
 								<ul class="nav nav-tabs menu_tab" id="myTab" role="tablist">
 									<li class="nav-item">
-										<a class="nav-link" id="salads-tab" data-toggle="tab" href="#salads" role="tab" aria-selected="false">Salads</a>
+									<Link to='/salads' className="tabs">Salads</Link>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" id="meals-tab" data-toggle="tab" href="#meals" role="tab" aria-selected="false">Meals</a>
+									<Link to='/meals' className="tabs">Meals</Link>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link active show" id="desserts-tab" data-toggle="tab" href="#desserts" role="tab" aria-selected="true">Desserts</a>
+									<Link to='/desserts' className="tabs">Desserts</Link>
 									</li>
 								</ul>
 							</div>
@@ -153,6 +153,9 @@ body {
 	font-weight: bold;
 	color: #FF5E18;
 	font-style: italic;
+}
+.tabs:hover{
+	background-color:#ff5e18;
 }
 
 `

@@ -1,8 +1,9 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { ToastContainer } from 'react-toastify';
 import { Switch, Route } from 'react-router-dom';
-import { AuthProvider } from '../user/Auth/AuthContext';
+import { UserProvider } from '../user/Auth/UserContext';
 import Navigation from '../Navigation/Navigation';
 import Footer from '../Footer/Footer';
 import Main from '../Main/Main';
@@ -18,11 +19,11 @@ import Profile from '../user/Profile/Profile';
 import Contacts from '../Contacts/Contacts';
 import NotFound from '../NotFound';
 
-class App extends React.Component {
-  render() {
+
+function App() {
     return (
       <div>
-        <AuthProvider>
+        <UserProvider>
           <Navigation />
           <Switch>
             <Route path='/' exact component={Main} />
@@ -40,10 +41,21 @@ class App extends React.Component {
 
           </Switch>
           <Footer />
-        </AuthProvider>
-      </div>
-    );
+        </UserProvider>
+        <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnVisibilityChange
+        draggable
+        pauseOnHover
+        />
+        </div>
+    )
   }
-}
+
 
 export default App;
