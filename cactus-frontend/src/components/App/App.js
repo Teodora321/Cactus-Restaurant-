@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { ToastContainer } from 'react-toastify';
 import { Switch, Route } from 'react-router-dom';
 import { UserProvider } from '../user/Auth/UserContext';
 import Navigation from '../Navigation/Navigation';
@@ -15,7 +14,7 @@ import CookiePolicy from '../pages-policy/Cookie-policy';
 import Register from '../user/Register/Register';
 import Login from '../user/Login/Login';
 import Logout from '../user/Logout/Logout';
-import Profile from '../user/Profile/Profile';
+import Cart from '../user/Cart/Cart';
 import Contacts from '../Contacts/Contacts';
 import NotFound from '../NotFound';
 
@@ -33,7 +32,7 @@ function App() {
             <Route path='/register' exact component={Register} />
             <Route path='/login' exact component={Login} />
             <Route path='/logout' exact component={Logout} />
-            <Route path='/profile' exact component={Profile} />
+            <Route path='/cart' exact component={Cart} />
             <Route path='/contacts' exact component={Contacts} />
             <Route path='/menu' exact component={Menu} />
             <Route path="/product/:id" exact component={Details} />
@@ -42,17 +41,6 @@ function App() {
           </Switch>
           <Footer />
         </UserProvider>
-        <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar
-        newestOnTop
-        closeOnClick
-        rtl={false}
-        pauseOnVisibilityChange
-        draggable
-        pauseOnHover
-        />
         </div>
     )
   }

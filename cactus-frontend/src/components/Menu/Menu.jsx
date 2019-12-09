@@ -2,8 +2,8 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Item from './Item';
-import data from '../../data';
 import Image from './bg-menu.jpg';
+import data from '../../data';
 
 const renderItem = (products) => {
 	return products.map(product => {
@@ -15,12 +15,8 @@ const renderItem = (products) => {
 	})
 }
 
-class Menu extends React.Component {
-	state = {
-		ownerName: ""
-	}
-
-	render() {
+function Menu() {
+	
 		return (
 			<MenuContainer style={{ backgroundImage: `url(${Image})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
 				
@@ -34,15 +30,15 @@ class Menu extends React.Component {
 									</div>
 								</div>
 							</div>
-							<div class="row">
-								<ul class="nav nav-tabs menu_tab" id="myTab" role="tablist">
-									<li class="nav-item">
+							<div className="row">
+								<ul className="nav nav-tabs menu_tab" id="myTab" role="tablist">
+									<li className="nav-item">
 									<Link to='/salads' className="tabs">Salads</Link>
 									</li>
-									<li class="nav-item">
+									<li className="nav-item">
 									<Link to='/meals' className="tabs">Meals</Link>
 									</li>
-									<li class="nav-item">
+									<li className="nav-item">
 									<Link to='/desserts' className="tabs">Desserts</Link>
 									</li>
 								</ul>
@@ -58,7 +54,7 @@ class Menu extends React.Component {
 			</MenuContainer>
 		)
 	}
-}
+
 export default Menu;
 
 const MenuContainer = styled.main`

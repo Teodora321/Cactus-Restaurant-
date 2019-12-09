@@ -1,33 +1,44 @@
-import React, { useContext } from "react";
-import { Form, Field} from "react-final-form";
+import React, { useContext, useState } from "react";
+import { Form, Field } from "react-final-form";
 import { useHistory } from 'react-router-dom';
 import userServices from '../../../services/user-service';
 import styled from 'styled-components';
 import { UserContext } from '../Auth/UserContext';
-import loginValidator from '../../../utils/loginValidator';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 
+const loginValidations = (values) => {
+    const errors = {}
+    if (!values.email) {
+        errors.email = 'Please, enter your email!'
+    }
+    if (!values.password) {
+        errors.password = 'Please, enter your password!'
+    }
+
+
+}
 function Login() {
     const history = useHistory();
     const [user, setUserStatus] = useContext(UserContext);
-    const onSubmit = (email, password) => {
- 
-        if (loginValidator(email, password)) {
-            userServices.login(email, password)
-                .then(data => {
-                    console.log(data);
-                    toast.success('You successfully logged in!');
-                    setUserStatus({ loggedIn: true, userId: user._id });
-                    history.push("/");
-                }
-                )
-                .catch(() => {
-                    toast.error('Incorrect username or password!');
-                    return false;
+    const [errors, setErrors] = useState({});
+
+    const onSubmit = (values) => {
+        const { email, password } = values;
+        const data = { email, password };
+        userServices.login(data)
+            .then(data => {
+                console.log(data)
+                setUserStatus({
+                    loggedIn: true, userId: user._id, name: user.name
                 });
-        };
+                history.push("/");
+            }
+            ).catch(err => {
+                setErrors({ err });
+                console.log(err);
+                console.log(errors);
+            });
+
     }
 
     return (
@@ -36,37 +47,38 @@ function Login() {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-4 register-sec">
-                        <h2 className="text-center">Login</h2>
-                        <Form
-                        onSubmit={onSubmit}
-                        render={({ handleSubmit, submitting, values }) => (
-                    <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
-                        <Field name="email">
-                            {({ input, meta }) => (
-                                <div className="form-group">
-                                    <label className="text-uppercase">Email</label>
-                                    <input className="form-control" {...input} type="text"/>
-                                    {meta.error && meta.touched && <span>{meta.error}</span>}
-                                </div>
-                            )}
-                        </Field>
-                        <Field name="password">
-                            {({ input, meta }) => (
-                                <div className="form-group">
-                                    <label className="text-uppercase">Password</label>
-                                    <input className="form-control" {...input} type="password" />
-                                    {meta.error && meta.touched && <span>{meta.error}</span>}
-                                </div>
-                            )}
-                        </Field>
-                        
-                            <button className="btn btn-register float-right" type="submit" disabled={submitting}>
-                                Login
+                            <h2 className="text-center">Login</h2>
+                            <Form
+                                validate={loginValidations}
+                                onSubmit={onSubmit}
+                                render={({ handleSubmit, submitting }) => (
+                                    <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
+                                        <Field name="email">
+                                            {({ input, meta }) => (
+                                                <div className="form-group">
+                                                    <label className="text-uppercase">Email</label>
+                                                    <input className="form-control" {...input} type="text" />
+                                                    {meta.error && meta.touched && <span>{meta.error}</span>}
+                                                </div>
+                                            )}
+                                        </Field>
+                                        <Field name="password">
+                                            {({ input, meta }) => (
+                                                <div className="form-group">
+                                                    <label className="text-uppercase">Password</label>
+                                                    <input className="form-control" {...input} type="password" />
+                                                    {meta.error && meta.touched && <span>{meta.error}</span>}
+                                                </div>
+                                            )}
+                                        </Field>
+
+                                        <button className="btn btn-register float-right" type="submit" disabled={submitting}>
+                                            Login
                             </button>
-                        
-                    </form>
-                        )}
-                        />   
+
+                                    </form>
+                                )}
+                            />
                         </div>
                         <div className="col-md-8 banner-sec">
                         </div>

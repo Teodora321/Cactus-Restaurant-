@@ -7,7 +7,6 @@ function Logout() {
     const [user, setUserStatus] = useContext(UserContext);
 
     userService.logout()
-        
         .then((res) => {
         setUserStatus({loggedIn: false, userId:''})
         console.log(res);

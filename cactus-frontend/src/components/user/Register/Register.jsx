@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Field } from "react-final-form";
 import { useHistory, Link } from 'react-router-dom';
 
@@ -6,14 +6,40 @@ import userServices from '../../../services/user-service';
 import styled from 'styled-components';
 
 
+const registerValidations = values => {
+    const errors = {}
+    if (!values.email) {
+        errors.email = 'Please, enter your email!'
+    } else if (values.email.length < 6) {
+        errors.email = 'Please, enter a valid email!'
+    }
+    if (!values.password) {
+        errors.password = 'Please, enter your password'
+    } else if (values.password.length < 5) {
+        errors.password = 'Your password is too week!'
+    }
+    if (!values.name) {
+        errors.name = 'Please, enter your name!'
+    }
+    if (!values.rePassword) {
+        errors.rePassword = 'Please enter your re-password!'
+    } else if (values.password !== values.rePassword) {
+        errors.confirm = 'Both passwords should match!'
+    }
+    return errors
+}
 
 function Register() {
     const history = useHistory();
 
+
     const onSubmit = (values) => {
         userServices.register(values)
             .then(() => history.push("/login"))
-            .catch(err => console.log(err));
+            .catch(err => {
+                console.log(err);
+            });
+
     };
 
     return (
@@ -24,8 +50,9 @@ function Register() {
                         <div className="col-md-4 register-sec">
                             <h2 className="text-center">Register</h2>
                             <Form
+                                validate={registerValidations}
                                 onSubmit={onSubmit}
-                                render={({ handleSubmit }) => (
+                                render={({ handleSubmit, submitting }) => (
                                     <form onSubmit={handleSubmit}>
                                         <Field name="email">
                                             {({ input, meta }) => (
@@ -83,9 +110,9 @@ function Register() {
                                             )}
                                         </Field>
                                         <div>
-                                        <button className="btn btn-register float-right"  type="submit" onClick={(event) => { event.preventDefault(); handleSubmit(); }}>
+                                            <button className="btn btn-register float-right" type='submit' onClick={(event) => { event.preventDefault(); handleSubmit(); }}>
                                                 <Link to='/'>Register</Link>
-                                        </button>
+                                            </button>
                                         </div>
 
                                     </form>

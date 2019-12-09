@@ -1,6 +1,6 @@
 const itemService = {
     getAll: function () {
-        return fetch(`http://localhost:9999/api/items`, {
+        return fetch(`http://localhost:9999/api/menu`, {
             body: JSON.stringify(data),
             method: 'GET',
             headers: {

@@ -1,10 +1,11 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import UserContext from '../user/Auth/UserContext';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 function Navigation() {
-    const [user] = useContext(UserContext)
+    const [user] = useContext(UserContext);
+    console.log(user);
 
     return (
         <NavContainer className="main-nav">
@@ -15,47 +16,52 @@ function Navigation() {
                     </li>
 
                     <Link to="/">
-                        <li>
+                        <li className='glyphicon glyphicon-home'> 
                             Home
-                    </li>
+                        </li>
                     </Link>
                     <Link to="/menu">
-                        <li>
+                        <li className='glyphicon glyphicon-menu-hamburger'>
                             Menu
                         </li>
                     </Link>
                     <Link to="/contacts">
-                        <li>
+                        <li className='glyphicon glyphicon-phone-alt'>
                             Contacts
                         </li>
                     </Link>
                 </ul>
-                { !user.loggedIn ?
-                <span className='user'> 
-                <Link to="/register">
-                        <li>
-                            Register
-                        </li>
-                    </Link>
-                    <Link to="/login">
-                        <li>
-                            Login
-                        </li>
-                        </Link> 
-                        </span>
+                {!user.loggedIn ?
+                    <span className='user'>
+                        <Link to="/register">
+                            <li className='glyphicon glyphicon-pushpin'>
+                                Register
+                            </li>
+                        </Link>
+                        <Link to="/login">
+                            <li className='glyphicon glyphicon-log-in'>
+                                Login
+                            </li>
+                        </Link>
+                    </span>
                     :
-                    <span className="user"> 
-                    <Link to="/profile">
-                        <li>
-                            Profile
-                        </li>
-                    </Link>
-                    <Link to="/logout">
-                        <li>
-                            Logout
-                        </li>
-                    </Link> 
-                </span>
+                    <span className="user">
+                        <Link to="/profile">
+                            <li className='glyphicon glyphicon-user'>
+                                Profile
+                            </li>
+                        </Link>
+                        <Link to="/cart">
+                            <li className='glyphicon glyphicon-shopping-cart'>
+                                Cart
+                            </li>
+                        </Link>
+                        <Link to="/logout">
+                            <li className='glyphicon glyphicon-log-out'>
+                                Logout
+                            </li>
+                        </Link>
+                    </span>
                 }
             </nav>
         </NavContainer>
@@ -90,21 +96,21 @@ const NavContainer = styled.nav`
     color:#ff5e18;
     font-size: 1.5rem;
     text-decoration:none;
-    margin-left: 3em;
+    margin-left: 2em;
     list-style: none;
   }
   .user li:hover {
     color: white;
     text-decoration:none;
   }
-//   .user{
-//     position: absolute;
-//     right: 26px;
-//     width: 200px;
-//     height: 120px;
-//     display: inherit;
-//     text-decoration:none;
-//   }
+  .user{
+    position: absolute;
+    right: 126px;
+    width: 200px;
+    height: 120px;
+    display: inherit;
+    text-decoration:none;
+  }
 
   #logo{
     position: absolute;
