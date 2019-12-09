@@ -38,12 +38,11 @@ class SingleItem extends React.Component {
 }
 export default SingleItem;
 
-const ImageContainer=styled.section`
+const ImageContainer = styled.div`
+    padding-top:100px;
 .menu_content{
     color:white;
 }
-.single_menu_list{
-    background-color:
-}
+
 
 `

@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Item from './Item';
-import Image from './bg-menu.jpg';
+import Image from './menuitem.jpg';
 import data from '../../data';
 
 const renderItem = (products) => {
@@ -66,6 +66,7 @@ body {
 .mb-60 {
 	margin-bottom: 60px;
 }
+
 .section-title p {
 	color:white
 	font-size: 24px;
@@ -81,7 +82,7 @@ body {
 	padding-bottom: 25px;
 }
 .section-title{
-	color:white
+	color:white;
 	padding-top:120px;
 }
 .section-title h4::before {
@@ -97,6 +98,7 @@ body {
 	content: "";
 	background-color: #FF5E18;
 }
+
 #myTabContent {
 	margin-top: 50px;
 }
@@ -108,7 +110,8 @@ body {
 	margin-bottom: -1px;
 }
 .nav-item a {
-	color: #333;
+	color: white;
+	font-size:15px;
 }
 .menu_tab .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
 	color: white;
@@ -153,5 +156,6 @@ body {
 .tabs:hover{
 	background-color:#ff5e18;
 }
+
 
 `
