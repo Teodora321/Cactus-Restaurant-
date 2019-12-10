@@ -1,40 +1,49 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import data from '../../data';
-import Image from './bg1.jpg'
+import itemService from '../../services/items-service';
+import Image from './bg1.jpg';
 
 
-const Details = (props) => {
+class Details extends React.Component {
+    state = {
+        item: null
+    };
 
-    const item = data.filter((item) => {
-        return item.id === props.match.params.id
-    })[0]
+    componentDidMount() {
+        const id = this.props.match.params.id;
+        itemService.load(id).then(item => {
+          this.setState({ item });
+        });
+      }
 
-    return (
-        <ProductContainer style={{ backgroundImage: `url(${Image})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
-            <div class="container">
-                <div class="card">
-                    <div class="container-fliud">
-                        <div class="wrapper row">
-                            <div class="preview col-md-6">
-                                <img className="image-class" src={item.imageUrl} alt="some alt" />
-                            </div>
-                            <div class="details col-md-6">
-                                <h3 class="product-title">{item.title}</h3>
-                                <p class="product-description">{item.description}</p>
-                                <h4 class="price">Price: <span>{item.price}BGN</span></h4>
-                                <div class="action">
-                                    <button class="add-to-cart btn btn-default" type="button">Add to cart</button>
-                                    <Link class="add-to-cart btn btn-default" type="button" to='/menu'>Back to menu</Link>
+    render() {
+        const { item } = this.state; 
+        return ( item &&
+            <ProductContainer style={{ backgroundImage: `url(${Image})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+                <div class="container">
+                    <div class="card">
+                        <div class="container-fliud">
+                            <div class="wrapper row">
+                                <div class="preview col-md-6">
+                                    <img className="image-class" src={item.imageUrl} alt="some alt" />
+                                </div>
+                                <div class="details col-md-6">
+                                    <h3 class="product-title">{item.title}</h3>
+                                    <p class="product-description">{item.description}</p>
+                                    <h4 class="price">Price: <span>{item.price}BGN</span></h4>
+                                    <div class="action">
+                                        <button class="add-to-cart btn btn-default" type="button">Add to cart</button>
+                                        <Link class="add-to-cart btn btn-default" type="button" to='/menu'>Back to menu</Link>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </ProductContainer>
-    )
+            </ProductContainer>
+        )
+    }
 }
 
 export default Details;

@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Switch, Route } from 'react-router-dom';
-import { UserProvider } from '../user/Auth/UserContext';
+import { UserProvider } from '../Auth/UserContext';
 import Navigation from '../Navigation/Navigation';
 import Footer from '../Footer/Footer';
 import Main from '../Main/Main';
@@ -14,7 +14,7 @@ import CookiePolicy from '../pages-policy/Cookie-policy';
 import Register from '../user/Register/Register';
 import Login from '../user/Login/Login';
 import Logout from '../user/Logout/Logout';
-import Cart from '../user/Cart/Cart';
+import Cart from '../Cart/Cart';
 import Contacts from '../Contacts/Contacts';
 import NotFound from '../NotFound';
 
@@ -34,8 +34,8 @@ function App() {
             <Route path='/logout' exact component={Logout} />
             <Route path='/cart' exact component={Cart} />
             <Route path='/contacts' exact component={Contacts} />
-            <Route path='/menu' exact component={Menu} />
-            <Route path="/product/:id" exact component={Details} />
+            <Route path='/menu' component={Menu} />
+            <Route path="/menu/:id" exact component={Details} />
             <Route component={NotFound} />
 
           </Switch>

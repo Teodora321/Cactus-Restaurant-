@@ -3,7 +3,7 @@ import { Form, Field } from "react-final-form";
 import { useHistory } from 'react-router-dom';
 import userServices from '../../../services/user-service';
 import styled from 'styled-components';
-import { UserContext } from '../Auth/UserContext';
+import { UserContext } from '../../Auth/UserContext';
 
 
 const loginValidations = (values) => {

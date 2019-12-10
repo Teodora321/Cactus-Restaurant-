@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import UserContext from '../user/Auth/UserContext';
+import UserContext from '../Auth/UserContext';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
