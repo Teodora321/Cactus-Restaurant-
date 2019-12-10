@@ -4,7 +4,7 @@ import userService from '../../../services/user-service';
 import { UserContext } from '../Auth/UserContext';
 
 function Logout() {
-    const [setUserStatus] = useContext(UserContext);
+    const [user, setUserStatus] = useContext(UserContext);
 
     userService.logout()
         .then((res) => {
