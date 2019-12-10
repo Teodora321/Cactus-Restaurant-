@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Form, Field } from "react-final-form";
 import { useHistory, Link } from 'react-router-dom';
 
@@ -31,8 +31,6 @@ const registerValidations = values => {
 
 function Register() {
     const history = useHistory();
-
-
     const onSubmit = (values) => {
         userServices.register(values)
             .then(() => history.push("/login"))

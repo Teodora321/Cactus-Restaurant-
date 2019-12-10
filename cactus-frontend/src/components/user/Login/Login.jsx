@@ -19,24 +19,23 @@ const loginValidations = (values) => {
 }
 function Login() {
     const history = useHistory();
-    const [user, setUserStatus] = useContext(UserContext);
-    const [errors, setErrors] = useState({});
 
-    const onSubmit = (values) => {
+    const [user, setUserStatus] = useContext(UserContext);
+    const [errors, setErrors] = useState('');
+
+    const onSubmit = values => {
         const { email, password } = values;
         const data = { email, password };
         userServices.login(data)
             .then(data => {
                 console.log(data)
                 setUserStatus({
-                    loggedIn: true, userId: user._id, name: user.name
+                    loggedIn: true, userId: data.user._id, name: data.user.name
                 });
                 history.push("/");
             }
-            ).catch(err => {
-                setErrors({ err });
-                console.log(err);
-                console.log(errors);
+            ).catch(errors=> {
+                setErrors('Invalid username or password!');
             });
 
     }
@@ -74,7 +73,7 @@ function Login() {
 
                                         <button className="btn btn-register float-right" type="submit" disabled={submitting}>
                                             Login
-                            </button>
+                                         </button>
 
                                     </form>
                                 )}

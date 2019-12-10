@@ -5,7 +5,6 @@ import styled from 'styled-components';
 
 function Navigation() {
     const [user] = useContext(UserContext);
-    console.log(user);
 
     return (
         <NavContainer className="main-nav">
@@ -49,6 +48,7 @@ function Navigation() {
                         <Link to="/profile">
                             <li className='glyphicon glyphicon-user'>
                                 Profile
+                                <div className='welcome'> Welcome {user.name}</div>
                             </li>
                         </Link>
                         <Link to="/cart">
@@ -62,7 +62,9 @@ function Navigation() {
                             </li>
                         </Link>
                     </span>
+                    
                 }
+               
             </nav>
         </NavContainer>
     );
@@ -80,6 +82,10 @@ const NavContainer = styled.nav`
     align-items: center;
     position:absolute;
     z-index:2;
+  }
+  .welcome{
+      padding-top:30px;
+      
   }
   ul li {
     color: white;
