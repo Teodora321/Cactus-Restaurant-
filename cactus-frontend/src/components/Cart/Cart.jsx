@@ -28,7 +28,7 @@ function Cart() {
                             </div>
                             <div class="panel-body">
                                 <div class="row">
-                                    <div class="col-xs-2"><img class="img-responsive" src="http://placehold.it/100x70" />
+                                    <div class="col-xs-2"><img class="img-responsive" src="http://placehold.it/100x70" alt="some"/>
                                     </div>
                                     <div class="col-xs-4">
                                         <h4 class="product-name"><strong>Product name</strong></h4><h4><small>Product description</small></h4>
@@ -49,7 +49,7 @@ function Cart() {
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-xs-2"><img class="img-responsive" src="http://placehold.it/100x70" />
+                                    <div class="col-xs-2"><img class="img-responsive" src="http://placehold.it/100x70" alt='some'/>
                                     </div>
                                     <div class="col-xs-4">
                                         <h4 class="product-name"><strong>Product name</strong></h4><h4><small>Product description</small></h4>

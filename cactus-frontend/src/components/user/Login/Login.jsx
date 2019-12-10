@@ -20,8 +20,8 @@ const loginValidations = (values) => {
 function Login() {
     const history = useHistory();
 
-    const [user, setUserStatus] = useContext(UserContext);
-    const [errors, setErrors] = useState('');
+    const [ setUserStatus] = useContext(UserContext);
+    const [ setErrors] = useState('');
 
     const onSubmit = values => {
         const { email, password } = values;

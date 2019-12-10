@@ -3,39 +3,40 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 
-class SingleItem extends React.Component {
-    constructor(props) {
-        super(props)
-    };
+const SingleItem = (props) => {
+    const items = props.items;
+    // { id, type, title, price, description, imageUrl } = props;
+    return (
+        <ImageContainer>
+            {
+                items.map(item => {
+                    return (
+                        <div className="single_menu_list">
+                            <img className="image-class" src={item.imageUrl} alt="some alt" />
+                            <div className="menu_content">
+                                <h4>
+                                    {item.title}
+                                    <span> {item.price} </span>
+                                </h4>
+                                <p>{item.description}</p>
+                            </div>
+                            <div class="btn-group">
+                                <Link to={`/item/${item._id}`}>
+                                    <button className="btn btn-success btn-product glyphicon glyphicon-chevron-right">Details</button>
+                                </Link>
+                                <Link to='/'>
+                                    <button className="btn btn-success btn-product glyphicon glyphicon-shopping-cart">Add To Cart</button>
+                                </Link>
 
-    render() {
-        const { id, type, title, price, description, imageUrl } = this.props;
-
-        return (
-            <ImageContainer>
-                <div className="single_menu_list">
-                    <img className="image-class" src={imageUrl} alt="some alt" />
-                    <div className="menu_content">
-                        <h4>
-                            {title}
-                            <span> {price} </span>
-                        </h4>
-                        <p>{description}</p>
-                    </div>
-                    <div class="btn-group">
-                        <Link to={`/product/${id}`}>
-                            <button className="btn btn-success btn-product glyphicon glyphicon-chevron-right">Details</button>
-                        </Link>
-                        <Link to='/'>
-                            <button className="btn btn-success btn-product glyphicon glyphicon-shopping-cart">Add To Cart</button>
-                        </Link>
-
-                    </div>
-                </div>
-            </ImageContainer>
-        )
-    }
+                            </div>
+                        </div>
+                    )
+                })
+            }
+        </ImageContainer>
+    )
 }
+
 export default SingleItem;
 
 const ImageContainer = styled.div`

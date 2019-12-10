@@ -7,7 +7,7 @@ import Image from './bg1.jpg'
 
 const Details = (props) => {
 
-    const product = data.filter((item) => {
+    const item = data.filter((item) => {
         return item.id === props.match.params.id
     })[0]
 
@@ -18,12 +18,12 @@ const Details = (props) => {
                     <div class="container-fliud">
                         <div class="wrapper row">
                             <div class="preview col-md-6">
-                                <img className="image-class" src={product.imageUrl} alt="some alt" />
+                                <img className="image-class" src={item.imageUrl} alt="some alt" />
                             </div>
                             <div class="details col-md-6">
-                                <h3 class="product-title">{product.title}</h3>
-                                <p class="product-description">{product.description}</p>
-                                <h4 class="price">Price: <span>{product.price}BGN</span></h4>
+                                <h3 class="product-title">{item.title}</h3>
+                                <p class="product-description">{item.description}</p>
+                                <h4 class="price">Price: <span>{item.price}BGN</span></h4>
                                 <div class="action">
                                     <button class="add-to-cart btn btn-default" type="button">Add to cart</button>
                                     <Link class="add-to-cart btn btn-default" type="button" to='/menu'>Back to menu</Link>
