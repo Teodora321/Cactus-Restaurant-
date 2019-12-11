@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Item from './Item';
 import Image from './menuitem.jpg';
-// import data from '../../data';
 import itemService from '../../services/items-service';
 import UserContext from '../Auth/UserContext'
 
@@ -21,7 +20,7 @@ class Menu extends React.Component {
 	}
 	handleClick = (id) => {
 		//this.setState({ cart: [...this.state.cart, id] });
-		
+
 		this.setState((prevState) => {
 			console.log(prevState)
 			console.log(id)
