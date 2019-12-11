@@ -2,7 +2,7 @@ const models = require('../models');
 
 module.exports = {
     getAll: (req, res, next) => {
-        models.Item.find()
+        models.Item.find().populate('user')
             .then(items => res.send(items))
             .catch(next)
     },

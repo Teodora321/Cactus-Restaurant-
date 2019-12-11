@@ -14,6 +14,7 @@ import CookiePolicy from '../pages-policy/Cookie-policy';
 import Register from '../user/Register/Register';
 import Login from '../user/Login/Login';
 import Logout from '../user/Logout/Logout';
+import Profile from '../user/Profile/Profile';
 import Cart from '../Cart/Cart';
 import Contacts from '../Contacts/Contacts';
 import NotFound from '../NotFound';
@@ -27,6 +28,7 @@ function App() {
           <Switch>
             <Route path='/' exact component={Main} />
             <Route path='/terms' exact component={Terms} />
+            <Route path='/profile' exact component={Profile} />
             <Route path='/privacy' exact component={PrivacyPolicy} />
             <Route path='/cookies' exact component={CookiePolicy} />
             <Route path='/register' exact component={Register} />
