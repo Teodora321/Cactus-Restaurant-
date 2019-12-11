@@ -5,14 +5,29 @@ import Item from './Item';
 import Image from './menuitem.jpg';
 // import data from '../../data';
 import itemService from '../../services/items-service';
+import UserContext from '../Auth/UserContext'
 
 class Menu extends React.Component {
+
+	static contextType = UserContext;
 
 	constructor(props) {
 		super(props)
 		this.state = {
-			items: []
+			items: [],
+			cart: [],
+
 		}
+	}
+	handleClick = (id) => {
+		//this.setState({ cart: [...this.state.cart, id] });
+		
+		this.setState((prevState) => {
+			console.log(prevState)
+			console.log(id)
+			return { cart: [prevState.cart.slice(), id]}
+		})
+		console.log(this.state)
 	}
 
 	componentDidMount() {
@@ -21,9 +36,11 @@ class Menu extends React.Component {
 		})
 	}
 	render() {
+		console.log(this.state)
 
 		return (
 			<MenuContainer style={{ backgroundImage: `url(${Image})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+				{this.state.cart ? <div>{this.state.cart[0]}</div> : <div>No item in cart</div>}
 				<section className="about-area pt-60">
 					<div className="container">
 						<div className="row">
@@ -49,15 +66,14 @@ class Menu extends React.Component {
 						</div>
 						<div className="row menu_style1">
 							<div className="col-md-4">
-									{
+								{
 									this.state.items.map((item) =>
-										<Item key={item._id} id={item._id} imageUrl={item.imageUrl} description={item.description} imageAlt="alt" title={item.title} price={item.price} type={item.type} />
+										<Item key={item._id} handler={this.handleClick} id={item._id} imageUrl={item.imageUrl} description={item.description} imageAlt="alt" title={item.title} price={item.price} type={item.type} />
 									)}
 							</div>
 						</div>
 					</div>
 				</section>
-
 			</MenuContainer>
 		)
 	}

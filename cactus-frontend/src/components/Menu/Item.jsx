@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 
-function Item({ id, type, title, price, description, imageUrl }) {
+function Item({ id, handler, type, title, price, description, imageUrl }) {
+
+   
 
     return (
         <ImageContainer>
@@ -20,9 +22,9 @@ function Item({ id, type, title, price, description, imageUrl }) {
                     <Link to={`/items/${id}`}>
                         <button className="btn btn-success btn-product glyphicon glyphicon-chevron-right">Details</button>
                     </Link>
-                    <Link to='/'>
-                        <button className="btn btn-success btn-product glyphicon glyphicon-shopping-cart">Add To Cart</button>
-                    </Link>
+                    {/* <Link to='/ite'> */}
+                        <button onClick={() =>handler(id)} className="btn btn-success btn-product glyphicon glyphicon-shopping-cart">Add To Cart</button>
+                    {/* </Link> */}
 
                 </div>
             </div>

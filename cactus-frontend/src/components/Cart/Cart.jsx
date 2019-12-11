@@ -1,9 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import Image from './bg1.jpg'
+import Image from './bg1.jpg';
+import UserContext from '../Auth/UserContext';
 
 class Cart extends React.Component{
+
+    static contextType = UserContext;
+
+    constructor(props) {
+        super(props)
+    }
+
+    componentDidMount() {
+        const user = this.context;
+        const userId = user[0].userId;
+        
+    }
 
     render() {
         return (

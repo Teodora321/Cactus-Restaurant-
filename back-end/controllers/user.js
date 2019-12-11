@@ -13,7 +13,7 @@ module.exports = {
         register: (req, res, next) => {
            
             const { email, name, address, password} = req.body;
-            console.log( 'data',email, name, address, password )
+            // console.log( 'data',email, name, address, password )
             models.User.create({email, name, address, password})
                 .then((createdUser) => res.send(createdUser))
                 .catch(next) 
@@ -37,9 +37,6 @@ module.exports = {
 
         logout: (req, res, next) => {
             const token = req.cookies[config.authCookieName];
-            console.log('-'.repeat(100));
-            console.log(token);
-            console.log('-'.repeat(100));
             models.TokenBlacklist.create({ token })
                 .then(() => {
                     res.clearCookie(config.authCookieName).send('Logout successfully!');
