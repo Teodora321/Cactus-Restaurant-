@@ -34,8 +34,8 @@ function App() {
             <Route path='/logout' exact component={Logout} />
             <Route path='/cart' exact component={Cart} />
             <Route path='/contacts' exact component={Contacts} />
-            <Route path='/menu' component={Menu} />
-            <Route path="/menu/:id" exact component={Details} />
+            <Route path='/items' exact component={Menu} />
+            <Route path="/items/:id" exact component={Details} />
             <Route component={NotFound} />
 
           </Switch>

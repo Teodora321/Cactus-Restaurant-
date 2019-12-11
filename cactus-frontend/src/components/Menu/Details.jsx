@@ -12,8 +12,9 @@ class Details extends React.Component {
 
     componentDidMount() {
         const id = this.props.match.params.id;
-        itemService.load(id).then(item => {
-          this.setState({ item });
+        itemService.getDetails(id).then(res => {
+            //console.log(res)
+          this.setState({ item:res});
         });
       }
 
@@ -34,7 +35,7 @@ class Details extends React.Component {
                                     <h4 class="price">Price: <span>{item.price}BGN</span></h4>
                                     <div class="action">
                                         <button class="add-to-cart btn btn-default" type="button">Add to cart</button>
-                                        <Link class="add-to-cart btn btn-default" type="button" to='/menu'>Back to menu</Link>
+                                        <Link class="add-to-cart btn btn-default" type="button" to='/items'>Back to menu</Link>
                                     </div>
                                 </div>
                             </div>
@@ -45,7 +46,6 @@ class Details extends React.Component {
         )
     }
 }
-
 export default Details;
 
 const ProductContainer = styled.main`

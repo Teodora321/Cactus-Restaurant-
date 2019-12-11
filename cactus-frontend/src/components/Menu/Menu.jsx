@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Item from './Item';
@@ -6,17 +6,24 @@ import Image from './menuitem.jpg';
 // import data from '../../data';
 import itemService from '../../services/items-service';
 
-const Menu = () => {
+class Menu extends React.Component {
 
-	const [items, setItems] = React.useState(null);
-	React.useEffect(() => {
-		itemService.getAll(null).then(items => {
-		  setItems(items);
-		});
-	  });
+	constructor(props) {
+		super(props)
+		this.state = {
+			items: []
+		}
+	}
 
-	return (
-	<MenuContainer style={{ backgroundImage: `url(${Image})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>	
+	componentDidMount() {
+		itemService.getAll().then(res => {
+			this.setState({ items: res })
+		})
+	}
+	render() {
+
+		return (
+			<MenuContainer style={{ backgroundImage: `url(${Image})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
 				<section className="about-area pt-60">
 					<div className="container">
 						<div className="row">
@@ -42,18 +49,19 @@ const Menu = () => {
 						</div>
 						<div className="row menu_style1">
 							<div className="col-md-4">
-							{
-								 items && items.map((item) =>
-								<Item id={item._id} imageUrl={item.imageUrl} imageAlt="alt" title={item.title} price={item.price} type={item.type} />
-							)}
+									{
+									this.state.items.map((item) =>
+										<Item key={item._id} id={item._id} imageUrl={item.imageUrl} description={item.description} imageAlt="alt" title={item.title} price={item.price} type={item.type} />
+									)}
 							</div>
 						</div>
-					</div>	
+					</div>
 				</section>
-				
+
 			</MenuContainer>
 		)
 	}
+}
 
 export default Menu;
 

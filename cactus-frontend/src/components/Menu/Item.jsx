@@ -16,8 +16,8 @@ function Item({ id, type, title, price, description, imageUrl }) {
                     </h4>
                     <p>{description}</p>
                 </div>
-                <div class="btn-group">
-                    <Link to={`/menu/${id}`}>
+                <div className="btn-group">
+                    <Link to={`/items/${id}`}>
                         <button className="btn btn-success btn-product glyphicon glyphicon-chevron-right">Details</button>
                     </Link>
                     <Link to='/'>
@@ -28,7 +28,7 @@ function Item({ id, type, title, price, description, imageUrl }) {
             </div>
             
         
-    }
+    
         </ImageContainer>
     )
 }

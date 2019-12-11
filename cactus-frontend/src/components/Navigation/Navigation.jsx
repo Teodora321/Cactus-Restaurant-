@@ -19,7 +19,7 @@ function Navigation() {
                             Home
                         </li>
                     </Link>
-                    <Link to="/menu">
+                    <Link to="/items">
                         <li className='glyphicon glyphicon-menu-hamburger'>
                             Menu
                         </li>
