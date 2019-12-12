@@ -38,7 +38,7 @@ Install dependencies in both frontend and backend folders
 cd back-end
 node index.js
 ```
-Start frontend server
+Start frontend server and backend server 
 ```sh
 cd cactus-frontend
 yarn start or npm start
