@@ -23,8 +23,7 @@ class Menu extends React.Component {
 
 		this.setState((prevState) => {
 			console.log(prevState)
-			console.log(id)
-			return { cart: [prevState.cart.slice(), id]}
+			return { cart: [...prevState.cart, id]}
 		})
 		console.log(this.state)
 	}
