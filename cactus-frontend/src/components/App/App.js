@@ -19,6 +19,7 @@ import Profile from '../user/Profile/Profile';
 import Cart from '../Cart/Cart';
 import Contacts from '../Contacts/Contacts';
 import NotFound from '../NotFound';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 
 function App() {
@@ -30,14 +31,14 @@ function App() {
         <Switch>
           <Route path='/' exact component={Main} />
           <Route path='/terms' exact component={Terms} />
-          <Route path='/profile' exact component={Profile} />
+          <ProtectedRoute path='/profile' exact component={Profile} />
           <Route path='/privacy' exact component={PrivacyPolicy} />
           <Route path='/cookies' exact component={CookiePolicy} />
           <Route path='/register' exact component={Register} />
           <Route path='/login' exact component={Login} />
           <Route path='/logout' exact component={Logout} />
-          <Route path='/cart' exact component={Cart} />
-          <Route path='/success' exact component={Success} />
+          <ProtectedRoute path='/cart' exact component={Cart} />
+          <ProtectedRoute path='/success' exact component={Success} />
           <Route path='/contacts' exact component={Contacts} />
           <Route path='/items' exact component={Menu} />
           <Route path="/items/:id" exact component={Details} />
