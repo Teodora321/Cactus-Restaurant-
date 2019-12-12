@@ -36,7 +36,7 @@ function App() {
           <Route path='/cookies' exact component={CookiePolicy} />
           <Route path='/register' exact component={Register} />
           <Route path='/login' exact component={Login} />
-          <Route path='/logout' exact component={Logout} />
+          <ProtectedRoute path='/logout' exact component={Logout} />
           <ProtectedRoute path='/cart' exact component={Cart} />
           <ProtectedRoute path='/success' exact component={Success} />
           <Route path='/contacts' exact component={Contacts} />
