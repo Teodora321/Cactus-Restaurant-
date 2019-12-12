@@ -5,6 +5,7 @@ import Item from './Item';
 import Image from './menuitem.jpg';
 import itemService from '../../services/items-service';
 import UserContext from '../Auth/UserContext'
+import userService from '../../services/user-service';
 
 class Menu extends React.Component {
 
@@ -18,13 +19,18 @@ class Menu extends React.Component {
 
 		}
 	}
-	handleClick = (id) => {
+	handleClick = (itemId) => {
+		const user = this.context;
+        const userId = user[0].userId;
 		//this.setState({ cart: [...this.state.cart, id] });
-
 		this.setState((prevState) => {
 			console.log(prevState)
-			return { cart: [...prevState.cart, id]}
+			return { cart: [...prevState.cart, itemId] }
 		})
+		//requwst to rest put user
+		userService.putOne({id:itemId}, userId).then(res => {
+			console.log(res)
+		}).catch(err=>console.log(err))
 		console.log(this.state)
 	}
 

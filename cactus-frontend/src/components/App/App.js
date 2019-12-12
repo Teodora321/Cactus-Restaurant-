@@ -21,9 +21,10 @@ import NotFound from '../NotFound';
 
 
 function App() {
-    return (
-      <div>
-        <UserProvider>
+
+  return (
+    <div>
+      <UserProvider>
           <Navigation />
           <Switch>
             <Route path='/' exact component={Main} />
@@ -39,13 +40,12 @@ function App() {
             <Route path='/items' exact component={Menu} />
             <Route path="/items/:id" exact component={Details} />
             <Route component={NotFound} />
-
           </Switch>
           <Footer />
         </UserProvider>
         </div>
-    )
-  }
-
-
-export default App;
+      )
+    }
+  
+  
+  export default App;

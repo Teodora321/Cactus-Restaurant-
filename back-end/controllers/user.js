@@ -11,12 +11,12 @@ module.exports = {
 
     post: {
         register: (req, res, next) => {
-           
-            const { email, name, address, password} = req.body;
+
+            const { email, name, address, password } = req.body;
             // console.log( 'data',email, name, address, password )
-            models.User.create({email, name, address, password})
+            models.User.create({ email, name, address, password })
                 .then((createdUser) => res.send(createdUser))
-                .catch(next) 
+                .catch(next)
         },
 
         login: (req, res, next) => {
@@ -30,7 +30,7 @@ module.exports = {
                     }
 
                     const token = utils.jwt.createToken({ id: user._id });
-                    res.cookie(config.authCookieName, token).send({token,user});
+                    res.cookie(config.authCookieName, token).send({ token, user });
                 })
                 .catch(next);
         },
@@ -42,7 +42,25 @@ module.exports = {
                     res.clearCookie(config.authCookieName).send('Logout successfully!');
                 })
                 .catch(next);
-        }
+        },
+
+        getOne: (req, res, next) => {
+            const id = req.params.id;
+            models.User.find({ _id: id })
+                .then((user) => {
+                    if (!user) { res.status(404).send("User Not Found!"); return; }
+                    res.send(user);
+                })
+                .catch(next)
+        },
+        putOne: (req, res, next) => {
+            const { id } = req.body;
+            const  _id  = req.params.id;
+            models.User.findOneAndUpdate({ _id }, { $push: { cart: id } }, { new: true }).populate('items')
+                .then((modifiedUser) => {
+                    res.send(modifiedUser);
+                }).catch(next);
+        },
     }
 
 };

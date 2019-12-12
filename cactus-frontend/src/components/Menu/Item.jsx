@@ -6,7 +6,6 @@ import styled from 'styled-components';
 function Item({ id, handler, type, title, price, description, imageUrl }) {
 
    
-
     return (
         <ImageContainer>
             <div className="single_menu_list">
