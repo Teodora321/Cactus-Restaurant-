@@ -1,35 +1,34 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import Image from './MENU1.png';
 
 function Success() {
     return (
-        <SuccessContainer>
-        <div class="row text-center">
-            <div class="col-sm-6 col-sm-offset-3">
-                <h2 className='styleh2'>Congratulations</h2>
-                <img alt='alt' src="http://osmhotels.com//assets/check-true.jpg" />
-                <h3>Dear, Faisal khan</h3>
-                <p className='stylep'>
-                    Thank you for verifying your Mobile No.We have sent you an email "faisalkhan.chat@gmail.com" with your details
-                    Please go to your above email now and login.
-                </p>
-                <Link to='/'>
-                    <button className="btn btn-success">
+        <SuccessContainer style={{ backgroundImage: `url(${Image})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+
+            <h1 className='styleh1'>
+                Thank you!
+            </h1>
+            <Link to='/'>
+                <div className='btn'>
+                    <button className="btn btn-success btn-lg">
                         Home
                     </button>
-                </Link>
+                </div>
+            </Link>
 
-            </div>
-            </div>
-            </SuccessContainer>
+
+        </SuccessContainer>
 
     )
 }
 
 export default Success;
 
-const SuccessContainer = styled.main`
+const SuccessContainer = styled.section`
+    width: 1440px;
+    height: 700px;
 
     .stylep{
         font-size:20px;
@@ -38,4 +37,14 @@ const SuccessContainer = styled.main`
     .styleh2{
         color:#0fad00"
     }
+    .styleh1{
+
+        padding-top:200px;
+        color:white;
+        font-size:150px;
+    }
+    .btn{
+        padding-top:300px;
+    }
+
 `

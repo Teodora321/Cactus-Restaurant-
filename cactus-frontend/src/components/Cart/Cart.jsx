@@ -1,72 +1,66 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import ItemInCart from './ItemInCart';
 import Image from './bg1.jpg';
 import UserContext from '../Auth/UserContext';
 
-class Cart extends React.Component {
+function Cart() {
 
-    static contextType = UserContext;
+    const [user, setUserStatus] = useContext(UserContext);
+    let total = 0;
+    console.log(user.cart)
 
-    constructor(props) {
-        super(props)
-    }
-
-    componentDidMount() {
-        const user = this.context;
-        //console.log(user[0].cart)
-
-    }
-
-    render() {
-        return (
-            <CartContainer style={{ backgroundImage: `url(${Image})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-xs-8">
-                            <div className="panel panel-info">
-                                <div className="panel-heading">
-                                    <div className="panel-title">
-                                        <div className="row">
-                                            <div className="col-xs-6">
-                                                <h5><span className="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</h5>
-                                            </div>
-                                            <div className="col-xs-6">
-                                                <Link to='/items'>
-                                                    <button type="button" className="btn btn-success btn-block">
-                                                        <span className="glyphicon glyphicon-share-alt"></span> Continue shopping
+    return (
+        <CartContainer style={{ backgroundImage: `url(${Image})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+            <div className="container">
+                <div className="row">
+                    <div className="col-xs-8">
+                        <div className="panel panel-info">
+                            <div className="panel-heading">
+                                <div className="panel-title">
+                                    <div className="row">
+                                        <div className="col-xs-6">
+                                            <h5><span className="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</h5>
+                                        </div>
+                                        <div className="col-xs-6">
+                                            <Link to='/items'>
+                                                <button type="button" className="btn btn-success btn-block">
+                                                    <span className="glyphicon glyphicon-share-alt"></span> Continue shopping
 								                     </button>
-                                                </Link>
-                                            </div>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="panel-body">
-                                    <ItemInCart></ItemInCart>
-                                </div>
-                                <div className="panel-footer">
-                                    <div className="row text-center">
-                                        <div className="col-xs-9">
-                                            <h4 className="text-right">Total <strong>$50.00</strong></h4>
-                                        </div>
-                                        <div className="col-xs-3">
-                                            <Link to='/success'>
+                            </div>
+                            <div className="panel-body">
+                                <ItemInCart/>
+                            </div>
+                            <div className="panel-footer">
+                                <div className="row text-center">
+                                    <div className="col-xs-9">
+                                        {user.cart && user.cart.map(item => {
+                                            total += Number(item.price)
+                                        })}
+                                        <h4 className="text-right">Total <strong> {total} BGN</strong></h4>
+                                    </div>
+                                    <div className="col-xs-3">
+                                        <Link to='/success'>
                                             <button type="button" className="btn btn-success btn-block">
                                                 Checkout
 							                </button>
-                                            </Link>
-                                        </div>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </CartContainer>
+            </div>
+        </CartContainer>
 
-        )
-    }
+    )
+
 }
 
 export default Cart;

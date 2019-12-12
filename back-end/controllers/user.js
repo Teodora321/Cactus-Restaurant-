@@ -62,6 +62,15 @@ module.exports = {
                     res.send(modifiedUser);
                 }).catch(next);
         },
+        deleteOne: (req, res, next) => {
+            const { id } = req.body;
+            const  _id  = req.params.id;
+            models.User.findOneAndUpdate({ _id }, { $pull: { cart: id } }, { new: true }).populate('cart')
+                .then((modifiedUser) => {
+                    console.log(modifiedUser);
+                    res.send(modifiedUser);
+                }).catch(next);
+        },
     }
 
 };

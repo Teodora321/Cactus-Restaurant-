@@ -37,6 +37,17 @@ const userService = {
     }).then(res => res.json());
      
   },
+  deleteOne: (data, id) => {
+    return fetch(`http://localhost:9999/api/user/${id ? id : ''}`, {
+      body: JSON.stringify(data),
+      method: 'DELETE',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      credentials: 'include'
+    }).then(res => res.json());
+     
+  },
 
 
 };
