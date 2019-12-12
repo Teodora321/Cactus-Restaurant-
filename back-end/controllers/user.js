@@ -21,7 +21,7 @@ module.exports = {
 
         login: (req, res, next) => {
             const { email, password, name } = req.body;
-            models.User.findOne({ email })
+            models.User.findOne({ email }).populate('cart')
                 .then((user) => Promise.all([user, user.matchPassword(password)]))
                 .then(([user, match]) => {
                     if (!match) {
@@ -56,8 +56,9 @@ module.exports = {
         putOne: (req, res, next) => {
             const { id } = req.body;
             const  _id  = req.params.id;
-            models.User.findOneAndUpdate({ _id }, { $push: { cart: id } }, { new: true }).populate('items')
+            models.User.findOneAndUpdate({ _id }, { $push: { cart: id } }, { new: true }).populate('cart')
                 .then((modifiedUser) => {
+                    console.log(modifiedUser);
                     res.send(modifiedUser);
                 }).catch(next);
         },

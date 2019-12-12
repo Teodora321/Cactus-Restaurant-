@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Image from './bg1.jpg';
 import UserContext from '../Auth/UserContext';
 
-class Cart extends React.Component{
+class Cart extends React.Component {
 
     static contextType = UserContext;
 
@@ -14,8 +14,8 @@ class Cart extends React.Component{
 
     componentDidMount() {
         const user = this.context;
-        const userId = user[0].userId;
-        
+        console.log(user[0].cart)
+
     }
 
     render() {

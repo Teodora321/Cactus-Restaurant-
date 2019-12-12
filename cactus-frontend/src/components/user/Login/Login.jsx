@@ -29,7 +29,7 @@ function Login() {
         userServices.login(data)
             .then(data => {
                 setUserStatus({
-                    loggedIn: true, userId: data.user._id, name: data.user.name
+                    loggedIn: true, userId: data.user._id, name: data.user.name, cart:data.user.cart
                 });
                 history.push("/");
             }
