@@ -44,4 +44,4 @@ cd cactus-frontend
 yarn start or npm start
 ```
 
-# Enjoy my firs MERN App :)
+# Enjoy my first MERN App :)
