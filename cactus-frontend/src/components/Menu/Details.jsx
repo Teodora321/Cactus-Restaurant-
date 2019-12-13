@@ -13,7 +13,6 @@ class Details extends React.Component {
     componentDidMount() {
         const id = this.props.match.params.id;
         itemService.getDetails(id).then(res => {
-            //console.log(res)
           this.setState({ item:res});
         });
       }

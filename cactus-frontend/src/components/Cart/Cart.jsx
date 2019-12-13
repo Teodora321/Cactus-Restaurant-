@@ -1,65 +1,94 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import ItemInCart from './ItemInCart';
 import Image from './bg1.jpg';
 import UserContext from '../Auth/UserContext';
+import userService from '../../services/user-service';
 
-function Cart() {
+class Cart extends React.Component {
 
-    const [user, setUserStatus] = useContext(UserContext);
-    let total = 0;
-    console.log(user.cart)
+    static contextType = UserContext;
 
-    return (
-        <CartContainer style={{ backgroundImage: `url(${Image})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
-            <div className="container">
-                <div className="row">
-                    <div className="col-xs-8">
-                        <div className="panel panel-info">
-                            <div className="panel-heading">
-                                <div className="panel-title">
-                                    <div className="row">
-                                        <div className="col-xs-6">
-                                            <h5><span className="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</h5>
-                                        </div>
-                                        <div className="col-xs-6">
-                                            <Link to='/items'>
-                                                <button type="button" className="btn btn-success btn-block">
-                                                    <span className="glyphicon glyphicon-share-alt"></span> Continue shopping
+
+    // const [user, setUserStatus] = this.context;
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            cart: []
+        }
+
+    }
+    handleClick = () => {
+       
+        const [user, setUserStatus] = this.context;
+        const userId = user.userId;
+        this.setState((prevState) => {
+            console.log(prevState)
+            return {cart:[this.cart]}
+        })
+        userService.deleteAll({ userId }).then(modifiedUser => {
+            console.log(modifiedUser)
+            setUserStatus({ ...user, ...modifiedUser });
+            const history = useHistory();
+            history.push('/')
+            console.log(this.state)
+
+        }).catch(err => console.log(err))
+        console.log(this.state)
+    }
+    
+    render() {
+        let total = 0;
+        return (
+            <CartContainer style={{ backgroundImage: `url(${Image})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-xs-8">
+                            <div className="panel panel-info">
+                                <div className="panel-heading">
+                                    <div className="panel-title">
+                                        <div className="row">
+                                            <div className="col-xs-6">
+                                                <h5><span className="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</h5>
+                                            </div>
+                                            <div className="col-xs-6">
+                                                <Link to='/items'>
+                                                    <button type="button" className="btn btn-success btn-block">
+                                                        <span className="glyphicon glyphicon-share-alt"></span> Continue shopping
 								                     </button>
-                                            </Link>
+                                                </Link>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div className="panel-body">
-                                <ItemInCart/>
-                            </div>
-                            <div className="panel-footer">
-                                <div className="row text-center">
-                                    <div className="col-xs-9">
-                                        {user.cart && user.cart.map(item => {
-                                            total += Number(item.price)
-                                        })}
-                                        <h4 className="text-right">Total <strong> {total} BGN</strong></h4>
-                                    </div>
-                                    <div className="col-xs-3">
-                                        <Link to='/success'>
-                                            <button type="button" className="btn btn-success btn-block">
-                                                Checkout
-							                </button>
-                                        </Link>
+                                <div className="panel-body">
+                                    <ItemInCart />
+                                </div>
+                                <div className="panel-footer">
+                                    <div className="row text-center">
+                                        <div className="col-xs-9">
+                                            {this.state.cart && this.state.cart.map(item => {
+                                                //total += Number(this.state.cart.price)
+                                            })}
+                                            <h4 className="text-right">Total <strong> BGN</strong></h4>
+                                        </div>
+                                        <div className="col-xs-3">
+                                                <button onClick={this.handleClick}  className="btn btn-success btn-block">
+                                                    Checkout
+							                    </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </CartContainer>
+            </CartContainer>
 
-    )
+        )
+    }
 
 }
 

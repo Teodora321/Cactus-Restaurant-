@@ -8,6 +8,17 @@ module.exports = {
             .then((users) => res.send(users))
             .catch(next)
     },
+    getUser: (req, res, next) => {
+        const id = req.params.id;
+        models.User.find({ _id: id })
+            .then(data => {
+                const { name, address, email } = data[0]; 
+                userDetails = { name, address, email };
+                return userDetails;
+            })
+            .then((user) => res.send(user))
+            .catch(next)
+    },
 
     post: {
         register: (req, res, next) => {
@@ -20,7 +31,7 @@ module.exports = {
         },
 
         login: (req, res, next) => {
-            const { email, password, name } = req.body;
+            const { email, password } = req.body;
             models.User.findOne({ email }).populate('cart')
                 .then((user) => Promise.all([user, user.matchPassword(password)]))
                 .then(([user, match]) => {
@@ -44,33 +55,49 @@ module.exports = {
                 .catch(next);
         },
 
-        getOne: (req, res, next) => {
+        put: (req, res, next) => {
             const id = req.params.id;
-            models.User.find({ _id: id })
-                .then((user) => {
-                    if (!user) { res.status(404).send("User Not Found!"); return; }
-                    res.send(user);
-                })
+            const { name, email, address } = req.body;
+            const query = { name, email, address }
+            models.User.findOneAndUpdate({ _id: id }, query, { new: true })
+                .then((updatedUser) => res.send(updatedUser))
+                .catch(err => console.log(err))
+        },
+
+        delete: (req, res, next) => {
+            const id = req.params.id;
+            models.User.deleteOne({ _id: id })
+                .then((removedUser) => res.send(removedUser))
                 .catch(next)
         },
+
+        // getOne: (req, res, next) => {
+        //     const id = req.params.id;
+        //     models.User.find({ _id: id })
+        //         .then((user) => {
+        //             if (!user) { res.status(404).send("User Not Found!"); return; }
+        //             res.send(user);
+        //         })
+        //         .catch(next)
+        // },
         putOne: (req, res, next) => {
             const { id } = req.body;
-            const  _id  = req.params.id;
+            const _id = req.params.id;
             models.User.findOneAndUpdate({ _id }, { $push: { cart: id } }, { new: true }).populate('cart')
                 .then((modifiedUser) => {
                     console.log(modifiedUser);
                     res.send(modifiedUser);
                 }).catch(next);
         },
-        deleteOne: (req, res, next) => {
-            const { id } = req.body;
-            const  _id  = req.params.id;
-            models.User.findOneAndUpdate({ _id }, { $pull: { cart: id } }, { new: true }).populate('cart')
-                .then((modifiedUser) => {
-                    console.log(modifiedUser);
-                    res.send(modifiedUser);
-                }).catch(next);
-        },
+        // deleteOne: (req, res, next) => {
+        //     const { id } = req.body;
+        //     const _id = req.params.id;
+        //     models.User.findOneAndUpdate({ _id }, { $pull: { cart: id } }, { new: true }).populate('cart')
+        //         .then((modifiedUser) => {
+        //             console.log(modifiedUser);
+        //             res.send(modifiedUser);
+        //         }).catch(next);
+        // },
     }
 
 };

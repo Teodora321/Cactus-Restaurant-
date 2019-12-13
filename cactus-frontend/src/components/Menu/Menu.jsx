@@ -46,7 +46,6 @@ class Menu extends React.Component {
 
 		return (
 			<MenuContainer style={{ backgroundImage: `url(${Image})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
-				{this.state.cart ? <div>{this.state.cart[0]}</div> : <div>No item in cart</div>}
 				<section className="about-area pt-60">
 					<div className="container">
 						<div className="row">

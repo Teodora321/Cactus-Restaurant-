@@ -26,6 +26,39 @@ const userService = {
     }).then(res => res.text());
   },
 
+  getOne: function (id) {
+    return fetch(`http://localhost:9999/api/user/${id}`)
+      .then(res => res.json())
+      .catch(err => console.log(err))
+  },
+  updateUser(id, data) {
+    console.log(id, data)
+    return fetch(`http://localhost:9999/api/user/${id}`, {
+      method: 'PUT',
+      credentials: 'include',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-type': 'application/json'
+      }
+    }
+    )
+      .then(res => res.json())
+      .catch(err => console.log(err))
+
+  },
+  deleteUser: (id) => {
+    return fetch(`http://localhost:9999/api/user/${id}`, {
+      method: 'DELETE',
+      credentials: 'include',
+      headers: {
+        'Content-type': 'application/json'
+      }
+    })
+      .then(res => res.json())
+      .catch(err => console.log(err))
+  },
+
+
   putOne: (data, id) => {
     return fetch(`http://localhost:9999/api/user/${id ? id : ''}`, {
       body: JSON.stringify(data),
@@ -35,18 +68,29 @@ const userService = {
       },
       credentials: 'include'
     }).then(res => res.json());
-     
+
   },
   deleteOne: (data, id) => {
     return fetch(`http://localhost:9999/api/user/${id ? id : ''}`, {
       body: JSON.stringify(data),
-      method: 'DELETE',
+      method: 'PUT',
       headers: {
         'Content-type': 'application/json'
       },
       credentials: 'include'
     }).then(res => res.json());
-     
+
+  },
+  deleteAll: (data, id) => {
+    return fetch(`http://localhost:9999/api/user/${id ? id : ''}`, {
+      body: JSON.stringify(data),
+      method: 'PUT',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      credentials: 'include'
+    }).then(res => res.json());
+
   },
 
 
