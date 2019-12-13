@@ -5,6 +5,7 @@ import UserContext from '../Auth/UserContext';
 function ItemInCart() {
 
     const [user, setUserStatus] = useContext(UserContext);
+    console.log(user)
 
     return (
         <Fragment>

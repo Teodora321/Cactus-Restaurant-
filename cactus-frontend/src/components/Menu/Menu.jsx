@@ -23,18 +23,21 @@ class Menu extends React.Component {
 		const [user, setUserStatus] = this.context;
 		const userId = user.userId;
 		//this.setState({ cart: [...this.state.cart, id] });
-		this.setState((prevState) => {
-			console.log(prevState)
-			return { cart: [...prevState.cart, itemId] }
-		})
-		//requwst to rest put user
-		userService.putOne({ id: itemId }, userId).then(modifiedUser => {
-			console.log(modifiedUser)
-			setUserStatus({ ...user, ...modifiedUser });
+		if (userId) {
+			this.setState((prevState) => {
+				console.log(prevState)
+				return { cart: [...prevState.cart, itemId] }
+			})
+			userService.putOne({ id: itemId }, userId).then(modifiedUser => {
+				console.log(modifiedUser)
+				setUserStatus({ ...user, ...modifiedUser });
 			
 			
-		}).catch(err => console.log(err))
-		console.log(this.state)
+			}).catch(err => console.log(err))
+			console.log(this.state)
+		} else {
+			 return
+		}
 	}
 
 	componentDidMount() {

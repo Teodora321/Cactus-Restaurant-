@@ -43,7 +43,7 @@ padding-top:100px;
     color:white;
 }
 .description{
-    font-size:10px
+    font-size:10px;
 }
 .btn-group:hover{
   background-color:#FF5E18;

@@ -3,9 +3,11 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import itemService from '../../services/items-service';
 import Image from './bg1.jpg';
+import UserContext from '../Auth/UserContext';
 
 
 class Details extends React.Component {
+    static contextType = UserContext
     state = {
         item: null
     };
@@ -13,13 +15,14 @@ class Details extends React.Component {
     componentDidMount() {
         const id = this.props.match.params.id;
         itemService.getDetails(id).then(res => {
-          this.setState({ item:res});
+            this.setState({ item: res });
         });
-      }
+    }
 
     render() {
-        const { item } = this.state; 
-        return ( item &&
+        const [user, setUserStatus] = this.context;
+        const { item } = this.state;
+        return (item &&
             <ProductContainer style={{ backgroundImage: `url(${Image})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
                 <div class="container">
                     <div class="card">
@@ -33,7 +36,14 @@ class Details extends React.Component {
                                     <p class="product-description">{item.description}</p>
                                     <h4 class="price">Price: <span>{item.price}BGN</span></h4>
                                     <div class="action">
-                                        <button class="add-to-cart btn btn-default" type="button">Add to cart</button>
+                                        {!user.loggedIn ? <Link to='/login'>
+                                            <button class="add-to-cart btn btn-default" type="button">Add to cart</button>
+                                        </Link>
+                                            :
+                                            <Link to='/items'>
+                                                <button class="add-to-cart btn btn-default" type="button">Add to cart</button>
+                                            </Link>
+                                        }
                                         <Link class="add-to-cart btn btn-default" type="button" to='/items'>Back to menu</Link>
                                     </div>
                                 </div>

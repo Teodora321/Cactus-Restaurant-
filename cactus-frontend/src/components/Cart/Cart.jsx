@@ -70,9 +70,9 @@ class Cart extends React.Component {
                                     <div className="row text-center">
                                         <div className="col-xs-9">
                                             {this.state.cart && this.state.cart.map(item => {
-                                                //total += Number(this.state.cart.price)
+                                                total += Number(this.state.cart.price)
                                             })}
-                                            <h4 className="text-right">Total <strong> BGN</strong></h4>
+                                            <h4 className="text-right">Total {total}<strong> BGN</strong></h4>
                                         </div>
                                         <div className="col-xs-3">
                                                 <button onClick={this.handleClick}  className="btn btn-success btn-block">
@@ -99,7 +99,6 @@ padding-top: 200px;
 padding-bottom: 100px;
 padding-left: 100px;
 padding-right: 100px;
-
 img {
     max-width: 100%; }   
 .preview {
@@ -122,15 +121,11 @@ img {
     -ms-flex-positive: 1;
     flex-grow: 1; 
 }
-
 .row {
         margin-top: 50px;
         background: rgba(0,0,0,0.2);
         padding: 3em;
         line-height: 1.5em;
      }
-
-
 }
-
 `
