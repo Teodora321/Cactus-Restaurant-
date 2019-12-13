@@ -94,7 +94,7 @@ const NavContainer = styled.nav`
     padding: 0 5 rem;
   }
  ul li:hover {
-    color: #8a261d;
+    color: #ca4b14;
     text-decoration:none;
   }
   .user li{
