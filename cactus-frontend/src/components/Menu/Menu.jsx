@@ -57,26 +57,13 @@ class Menu extends React.Component {
 								</div>
 							</div>
 						</div>
-						<div className="row">
-							<ul className="nav nav-tabs menu_tab" id="myTab" role="tablist">
-								<li className="nav-item">
-									<Link to='/salads' className="tabs">Salads</Link>
-								</li>
-								<li className="nav-item">
-									<Link to='/meals' className="tabs">Meals</Link>
-								</li>
-								<li className="nav-item">
-									<Link to='/desserts' className="tabs">Desserts</Link>
-								</li>
-							</ul>
-						</div>
-						<div className="row menu_style1">
-							<div className="col-md-4">
+						
+							<div className='items'>
 								{
 									this.state.items.map((item) =>
 										<Item key={item._id} handler={this.handleClick} id={item._id} imageUrl={item.imageUrl} description={item.description} imageAlt="alt" title={item.title} price={item.price} type={item.type} />
 									)}
-							</div>
+							
 						</div>
 					</div>
 				</section>
@@ -95,6 +82,13 @@ body {
 }
 .mb-60 {
 	margin-bottom: 60px;
+}
+.items{
+	
+		display: inline-block;
+		justify-content:center;
+		flex-wrap: wrap;
+	
 }
 
 .section-title p {

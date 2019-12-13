@@ -118,7 +118,12 @@ img {
     transition: background .3s ease; }
     .add-to-cart:hover, .like:hover {
     background: #ff9f1a;
-    color: #fff; }
+    color: #fff;
+ }
+ .product-description{
+     font-size:15px
+ }
+    
 `
 
 

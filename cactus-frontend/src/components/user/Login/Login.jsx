@@ -31,7 +31,7 @@ function Login() {
                 setUserStatus({
                     loggedIn: true, userId: data.user._id, name: data.user.name, cart:data.user.cart
                 });
-                history.push("/");
+                history.push("/items");
             }
         ).catch(errors => {
                 console.log(errors)
