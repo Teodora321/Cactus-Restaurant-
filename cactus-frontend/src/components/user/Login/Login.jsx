@@ -14,6 +14,7 @@ const loginValidations = (values) => {
     if (!values.password) {
         errors.password = 'Please, enter your password!'
     }
+    return errors
 
 
 }
@@ -33,8 +34,8 @@ function Login() {
                 });
                 history.push("/items");
             }
-        ).catch(errors => {
-                console.log(errors)
+        ).catch(() => {
+            setErrors('Invalid username or password!')
             });
 
     }
@@ -69,7 +70,9 @@ function Login() {
                                                 </div>
                                             )}
                                         </Field>
-
+                                        <div >
+                                         {errors ? errors : ""}
+                                        </div>    
                                         <button className="btn btn-register float-right" type="submit" disabled={submitting}>
                                             Login
                                          </button>

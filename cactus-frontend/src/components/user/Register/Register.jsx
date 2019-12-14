@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Field } from "react-final-form";
 import { useHistory, Link } from 'react-router-dom';
 
@@ -15,15 +15,17 @@ const registerValidations = values => {
     }
     if (!values.password) {
         errors.password = 'Please, enter your password'
-    } else if (values.password.length < 5) {
-        errors.password = 'Your password is too week!'
     }
     if (!values.name) {
         errors.name = 'Please, enter your name!'
     }
+    if (!values.address) {
+        errors.address = 'Please, enter your address!'
+    }
     if (!values.rePassword) {
         errors.rePassword = 'Please enter your re-password!'
-    } else if (values.password !== values.rePassword) {
+    }
+    if (values.password !== values.rePassword) {
         errors.confirm = 'Both passwords should match!'
     }
     return errors
@@ -31,6 +33,9 @@ const registerValidations = values => {
 
 function Register() {
     const history = useHistory();
+
+    const [errors, setErrors] = useState('');
+
     const onSubmit = (values) => {
         userServices.register(values)
             .then(() => history.push("/login"))
@@ -107,6 +112,9 @@ function Register() {
                                                 </>
                                             )}
                                         </Field>
+                                        <div >
+                                            {errors ? errors : ''}
+                                        </div>
                                         <div>
                                             <button className="btn btn-register float-right" type='submit' onClick={(event) => { event.preventDefault(); handleSubmit(); }}>
                                                 <Link to='/'>Register</Link>

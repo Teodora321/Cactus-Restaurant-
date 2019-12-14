@@ -24,27 +24,27 @@ class Details extends React.Component {
         const { item } = this.state;
         return (item &&
             <ProductContainer style={{ backgroundImage: `url(${Image})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
-                <div class="container">
-                    <div class="card">
-                        <div class="container-fliud">
-                            <div class="wrapper row">
-                                <div class="preview col-md-6">
-                                    <img className="image-class" src={item.imageUrl} alt="some alt" />
+                <div classNameName="container">
+                    <div className="card">
+                        <div className="container-fliud">
+                            <div className="wrapper row">
+                                <div className="preview col-md-6">
+                                    <img className="image-className" src={item.imageUrl} alt="some alt" />
                                 </div>
-                                <div class="details col-md-6">
-                                    <h3 class="product-title">{item.title}</h3>
-                                    <p class="product-description">{item.description}</p>
-                                    <h4 class="price">Price: <span>{item.price}BGN</span></h4>
-                                    <div class="action">
+                                <div className="details col-md-6">
+                                    <h3 className="product-title">{item.title}</h3>
+                                    <p className="product-description">{item.description}</p>
+                                    <h4 className="price">Price: <span>{item.price}BGN</span></h4>
+                                    <div className="action">
                                         {!user.loggedIn ? <Link to='/login'>
-                                            <button class="add-to-cart btn btn-default" type="button">Add to cart</button>
+                                            <button className="add-to-cart btn btn-default" type="button">Add to cart</button>
                                         </Link>
                                             :
                                             <Link to='/items'>
-                                                <button class="add-to-cart btn btn-default" type="button">Add to cart</button>
+                                                <button className="add-to-cart btn btn-default" type="button">Add to cart</button>
                                             </Link>
                                         }
-                                        <Link class="add-to-cart btn btn-default" type="button" to='/items'>Back to menu</Link>
+                                        <Link className="add-to-cart btn btn-default" type="button" to='/items'>Back to menu</Link>
                                     </div>
                                 </div>
                             </div>

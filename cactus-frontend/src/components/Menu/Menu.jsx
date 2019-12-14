@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Item from './Item';
@@ -28,12 +28,9 @@ class Menu extends React.Component {
 				return { cart: [prevState.cart.slice(), userId]}
 			})
 		userService.putOne({ id: itemId }, userId).then(modifiedUser => {
-				console.log(modifiedUser)
+			//console.log(modifiedUser)
 			setUserStatus({ ...user, ...modifiedUser });
-			console.log(modifiedUser)
-
-			
-			
+			//console.log(modifiedUser)			
 			}).catch(err => console.log(err))
 			console.log(this.state)
 		
@@ -56,6 +53,7 @@ class Menu extends React.Component {
 									<p>Famous for good food</p>
 									<h4>Our menu</h4>
 								</div>
+								
 							</div>
 						</div>
 						

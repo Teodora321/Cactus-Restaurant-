@@ -20,6 +20,14 @@ function Profile() {
             .catch(err => console.log(err))
     }, []);
 
+    const updateProfile = values => {
+        userServices.updateUser(user.userId, values)
+            .then(modifiedUser => {
+            })
+            .catch(err => console.log(err))
+
+    }
+
     const deleteUser = () => {
         userServices.deleteUser(user.userId)
             .then(() => {
@@ -41,6 +49,7 @@ function Profile() {
                                 <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive" />
                             </div>
                             <Form
+                                onSubmit={updateProfile}
                                 initialValues={userInfo}
                                 render={({ handleSubmit, pristine, form, submitting, values }) => {
                                     return (
@@ -67,9 +76,9 @@ function Profile() {
                                                 />
                                             </div>
                                             <div className="buttons">
-                                                {/* <button className="btn btn-register float-right" onClick={(ev) => { ev.preventDefault(); handleSubmit(); }} type="submit" disabled={submitting || pristine} >
+                                                <button className="btn btn-register float-right" onClick={(ev) => { ev.preventDefault(); handleSubmit(); }} type="submit" disabled={submitting || pristine} >
                                                     Update Profile
-                                                 </button> */}
+                                                 </button>
                                             </div>
                                             <div>
                                                 <button className="btn btn-register float-right" onClick={deleteUser}> Delete Frofile</button>
