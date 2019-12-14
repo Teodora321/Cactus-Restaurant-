@@ -60,6 +60,7 @@ const userService = {
 
 
   putOne: (data, id) => {
+    console.log(data)
     return fetch(`http://localhost:9999/api/user/${id ? id : ''}`, {
       body: JSON.stringify(data),
       method: 'PUT',

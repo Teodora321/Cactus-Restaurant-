@@ -22,22 +22,21 @@ class Menu extends React.Component {
 	handleClick = (itemId) => {
 		const [user, setUserStatus] = this.context;
 		const userId = user.userId;
-		//this.setState({ cart: [...this.state.cart, id] });
-		if (userId) {
+		//this.setState({ cart: [...this.state.cart, itemId] });
+		
 			this.setState((prevState) => {
-				console.log(prevState)
-				return { cart: [...prevState.cart, itemId] }
+				return { cart: [prevState.cart.slice(), userId]}
 			})
-			userService.putOne({ id: itemId }, userId).then(modifiedUser => {
+		userService.putOne({ id: itemId }, userId).then(modifiedUser => {
 				console.log(modifiedUser)
-				setUserStatus({ ...user, ...modifiedUser });
+			setUserStatus({ ...user, ...modifiedUser });
+			console.log(modifiedUser)
+
 			
 			
 			}).catch(err => console.log(err))
 			console.log(this.state)
-		} else {
-			 return
-		}
+		
 	}
 
 	componentDidMount() {
