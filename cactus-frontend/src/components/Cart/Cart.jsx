@@ -6,40 +6,14 @@ import Image from './bg1.jpg';
 import UserContext from '../Auth/UserContext';
 import userService from '../../services/user-service';
 
-class Cart extends React.Component {
+function Cart(){
+    const history = useHistory();
+    const [user] = useContext(UserContext);
 
-    static contextType = UserContext;
-
-
-    // const [user, setUserStatus] = this.context;
-
-    constructor(props) {
-        super(props)
-        this.state = {
-            cart: []
-        }
-
-    }
-    handleClick = () => {
-       
-        const [user, setUserStatus] = this.context;
-        const userId = user.userId;
-        this.setState((prevState) => {
-            console.log(prevState)
-            return {cart:[this.cart]}
-        })
-        userService.deleteAll({ userId }).then(modifiedUser => {
-            console.log(modifiedUser)
-            setUserStatus({ ...user, ...modifiedUser });
-            const history = useHistory();
-            history.push('/')
-            console.log(this.state)
-
-        }).catch(err => console.log(err))
-        console.log(this.state)
+    const handleClick = () => {
+        history.push('/')
     }
     
-    render() {
         let total = 0;
         return (
             <CartContainer style={{ backgroundImage: `url(${Image})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
@@ -69,13 +43,13 @@ class Cart extends React.Component {
                                 <div className="panel-footer">
                                     <div className="row text-center">
                                         <div className="col-xs-9">
-                                            {this.state.cart && this.state.cart.map(item => {
-                                                total += Number(this.state.cart.price)
+                                            {user.cart && user.cart.map(item => {
+                                                total += item.price
                                             })}
                                             <h4 className="text-right">Total {total}<strong> BGN</strong></h4>
                                         </div>
                                         <div className="col-xs-3">
-                                                <button onClick={this.handleClick}  className="btn btn-success btn-block">
+                                                <button onClick={handleClick}  className="btn btn-success btn-block">
                                                     Checkout
 							                    </button>
                                         </div>
@@ -89,8 +63,6 @@ class Cart extends React.Component {
 
         )
     }
-
-}
 
 export default Cart;
 
