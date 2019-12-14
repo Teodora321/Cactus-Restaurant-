@@ -32,7 +32,7 @@ const userService = {
       .catch(err => console.log(err))
   },
   updateUser(id, data) {
-    console.log(id, data)
+   // console.log(id, data)
     return fetch(`http://localhost:9999/api/user/${id}`, {
       method: 'PUT',
       credentials: 'include',
@@ -40,9 +40,7 @@ const userService = {
       headers: {
         'Content-type': 'application/json'
       }
-    }
-    )
-      .then(res => res.json())
+    }).then(res => res.json())
       .catch(err => console.log(err))
 
   },

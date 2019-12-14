@@ -6,7 +6,6 @@ import { UserProvider } from '../Auth/UserContext';
 import Navigation from '../Navigation/Navigation';
 import Footer from '../Footer/Footer';
 import Main from '../Main/Main';
-import Success from '../Cart/Success';
 import Terms from '../pages-policy/Terms';
 import Menu from '../Menu/Menu';
 import Details from '../Menu/Details';
@@ -38,7 +37,6 @@ function App() {
           <Route path='/login' exact component={Login} />
           <ProtectedRoute path='/logout' exact component={Logout} />
           <ProtectedRoute path='/cart' exact component={Cart} />
-          <ProtectedRoute path='/success' exact component={Success} />
           <Route path='/contacts' exact component={Contacts} />
           <Route path='/items' exact component={Menu} />
           <Route path="/items/:id" exact component={Details} />

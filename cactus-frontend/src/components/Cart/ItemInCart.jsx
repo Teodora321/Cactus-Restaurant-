@@ -24,9 +24,6 @@ function ItemInCart() {
                                 </div>
 
                                 <div class="col-xs-2">
-                                    <button type="button" className="btn btn-link btn-xs">
-                                        <span class="glyphicon glyphicon-trash"> </span>
-                                    </button>
                                 </div>
 
                             </div>
