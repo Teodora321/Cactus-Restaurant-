@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Item from './Item';
-import Image from './menuitem.jpg';
 import itemService from '../../services/items-service';
 import UserContext from '../Auth/UserContext'
 import userService from '../../services/user-service';
@@ -16,17 +15,21 @@ class Menu extends React.Component {
 		this.state = {
 			items: [],
 			cart: [],
-
+			search:''
 		}
 	}
+	updateSearch(event) {
+		this.setState({ search: event.target.value });
+	}
+
 	handleClick = (itemId) => {
 		const [user, setUserStatus] = this.context;
-		const userId = user.userId;
-		//this.setState({ cart: [...this.state.cart, itemId] });
-		
-			this.setState((prevState) => {
-				return { cart: [prevState.cart.slice(), userId]}
+		const userId = user.userId;	
+
+		this.setState((prevState) => {
+			return { cart: [prevState.cart, userId] }
 			})
+		
 		userService.putOne({ id: itemId }, userId).then(modifiedUser => {
 			//console.log(modifiedUser)
 			setUserStatus({ ...user, ...modifiedUser });
@@ -42,9 +45,11 @@ class Menu extends React.Component {
 		})
 	}
 	render() {
-
+		let filteredItems = this.state.items.filter((item) => {
+			return item.title.toLowerCase().indexOf(this.state.search.toLocaleLowerCase()) !==-1
+		});
 		return (
-			<MenuContainer style={{ backgroundImage: `url(${Image})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+			<MenuContainer>
 				<section className="about-area pt-60">
 					<div className="container">
 						<div className="row">
@@ -53,13 +58,18 @@ class Menu extends React.Component {
 									<p>Famous for good food</p>
 									<h4>Our menu</h4>
 								</div>
+								<div className='search text-center'>
+									<input type="text"
+										placeholder="Search..."
+										value={this.state.search}
+										onChange={this.updateSearch.bind(this)}/>
+								</div>
 								
 							</div>
 						</div>
-						
 							<div className='items'>
-								{
-									this.state.items.map((item) =>
+									{
+									filteredItems.map((item) =>
 										<Item key={item._id} handler={this.handleClick} id={item._id} imageUrl={item.imageUrl} description={item.description} imageAlt="alt" title={item.title} price={item.price} type={item.type} />
 									)}
 							
@@ -74,6 +84,10 @@ class Menu extends React.Component {
 export default Menu;
 
 const MenuContainer = styled.main`
+background: #DE6262; 
+background: -webkit-linear-gradient(to bottom, #3f4c6b, #3f4c6b);  
+background: linear-gradient(to bottom, #5a3f33  , rgba(0,0,0,0.9)); 
+
 body {
 	font-family: 'Montserrat', sans-serif;
 	color: #333;
@@ -81,6 +95,10 @@ body {
 }
 .mb-60 {
 	margin-bottom: 60px;
+}
+.search{
+	margin-top:20px;
+	
 }
 .items{
 	
