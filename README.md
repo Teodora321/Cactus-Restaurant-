@@ -2,7 +2,7 @@
 "Cactus Jak's Restaurant" is a single page application written on MERN stack for SoftUni JS Web Course. The idea is inspired by our little restaurant.
 
 
-## Key Functionalities
+#### Key Functionalities
 
  - Anonymous users and registered users have access to the menu page and details page of the current plate. The client can search through the items in the menu. 
  
