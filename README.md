@@ -4,9 +4,12 @@
 
 ## Key Functionalities
 
- - Anonymous users and registered users have access to the menu page and details page of the current plate.
- - Registered users are able to access their own cart and make orders and. 
- -Registered users are able to access their own profile and modify their information.
+ - Anonymous users and registered users have access to the menu page and details page of the current plate. The client can search through the items in the menu. 
+ 
+ -This application is using google maps for the exact location of the restaurant, also is added QR Code with the page on https://www.tripadvisor.com/ There are links to the official page in Facebook.
+ 
+ - Registered users are able to access their own cart and make orders. 
+ -Registered users are able to access their own profile and delete it.
 
 
 ## Installation
