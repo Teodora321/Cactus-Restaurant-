@@ -29,8 +29,8 @@ function Footer() {
                         <div className="col-md-3 col-sm-6">
                             <h4>Cactus Jak's Bar & Grill</h4>
                             <ul className="list-unstyled">
-                                <Link to='menu'><li> Menu</li></Link>
-                                <Link to='contacts'><li> Contacts</li></Link>
+                                <Link to='/items'><li> Menu</li></Link>
+                                <Link to='/contact'><li> Contacts</li></Link>
                             </ul>
                         </div>
                         {/* Column 3 */}
