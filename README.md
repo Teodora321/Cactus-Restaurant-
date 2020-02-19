@@ -1,4 +1,4 @@
-# Cactus Jaks'S Restaurant React Application + Express-Node.js
+# Cactus Jaks'S Restaurant MERN STACK APP
 "Cactus Jak's Restaurant" is a single page application written on MERN stack for SoftUni JS Web Course.
 
 
