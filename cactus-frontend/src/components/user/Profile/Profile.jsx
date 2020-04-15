@@ -23,6 +23,7 @@ function Profile() {
     const updateProfile = values => {
         userServices.updateUser(user.userId, values)
             .then(modifiedUser => {
+                history.push('/')
             })
             .catch(err => console.log(err))
 

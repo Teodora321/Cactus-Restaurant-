@@ -25,7 +25,7 @@ const registerValidations = values => {
     if (!values.rePassword) {
         errors.rePassword = 'Please enter your re-password!'
     }
-    if (values.password !== values.rePassword) {
+    else if (values.password !== values.rePassword) {
         errors.confirm = 'Both passwords should match!'
     }
     return errors

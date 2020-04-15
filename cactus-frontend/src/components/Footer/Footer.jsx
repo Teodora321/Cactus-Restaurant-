@@ -30,7 +30,7 @@ function Footer() {
                             <h4>Cactus Jak's Bar & Grill</h4>
                             <ul className="list-unstyled">
                                 <Link to='/items'><li> Menu</li></Link>
-                                <Link to='/contact'><li> Contacts</li></Link>
+                                <Link to='/contacts'><li> Contacts</li></Link>
                             </ul>
                         </div>
                         {/* Column 3 */}
