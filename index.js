@@ -1,5 +1,6 @@
 const config = require('./config/config');
 const dbConnection = require('./config/database');
+const path = require("path");
 
 const app = require('express')();
 
@@ -13,6 +14,11 @@ dbConnection().then(() => {
         console.error(err);
         res.status(500).send(err.message);
         console.log('*'.repeat(90))
+    });
+    app.use(express.static(path.join(__dirname, "client", "build")))
+
+    app.get("*", (req, res) => {
+        res.sendFile(path.join(__dirname, "client", "build", "index.html"));
     });
 
     app.listen(config.port, console.log(`Listening on port ${config.port}!`))
